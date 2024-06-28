@@ -1,5 +1,8 @@
 package com.chainsys.ebfusion.dao;
 
-public class UserDAO {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserDAO {
 
 }
