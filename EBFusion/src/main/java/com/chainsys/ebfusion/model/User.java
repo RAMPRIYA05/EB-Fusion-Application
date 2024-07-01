@@ -1,5 +1,7 @@
 package com.chainsys.ebfusion.model;
 
+import java.util.List;
+
 public class User {
   public User() {
 	  
@@ -51,6 +53,7 @@ public class User {
 		return "User [name=" + name + ", emailId=" + emailId + ", password=" + password + ", phoneNumber=" + phoneNumber
 				+ ", aadhaarNumber=" + aadhaarNumber + ", userType=" + userType + "]";
 	}
+	
 	
 	
 	
