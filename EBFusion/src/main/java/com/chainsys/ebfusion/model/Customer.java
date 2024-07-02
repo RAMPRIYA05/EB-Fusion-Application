@@ -1,14 +1,14 @@
 package com.chainsys.ebfusion.model;
 
-public class CustomerDetails {
+public class Customer {
 
 	
 	
-	public CustomerDetails() {
+	public Customer() {
 		
 	}
 	String emailId;
-	int serviceNumber;
+	long serviceNumber;
 	String address;
 	String district;
 	String state;
@@ -18,10 +18,11 @@ public class CustomerDetails {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getServiceNumber() {
+	
+	public long getServiceNumber() {
 		return serviceNumber;
 	}
-	public void setServiceNumber(int serviceNumber) {
+	public void setServiceNumber(long serviceNumber) {
 		this.serviceNumber = serviceNumber;
 	}
 	public String getAddress() {
@@ -44,7 +45,7 @@ public class CustomerDetails {
 	}
 	@Override
 	public String toString() {
-		return "CustomerDetails [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", address=" + address
+		return "Customer [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", address=" + address
 				+ ", district=" + district + ", state=" + state + "]";
 	}
 	

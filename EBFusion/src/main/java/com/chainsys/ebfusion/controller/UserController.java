@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.ebfusion.dao.UserDAO;
-import com.chainsys.ebfusion.model.CustomerDetails;
+import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -54,7 +54,7 @@ public class UserController {
         {
             if(emailId.equals("ram5@eb.com"))
             {
-                if(password.equals(userDAO.getAdminPassword(emailId)))
+                if(password.equals(userDAO.getPassword(emailId)))
                 {                    
                 	session.setAttribute("AdminEmailId", emailId);
                     return "adminWelcomePage.jsp";
@@ -66,7 +66,7 @@ public class UserController {
             }
             else if(emailId.equals(userDAO.getUserEmailId(emailId)))
             {
-                if(password.equals(userDAO.getUserPassword(emailId)))
+                if(password.equals(userDAO.getPassword(emailId)))
                 {
                 	session.setAttribute("UserEmailId", emailId);
                     return "userWelcomePage.jsp";

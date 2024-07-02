@@ -1,6 +1,6 @@
 package com.chainsys.ebfusion.model;
 
-import java.util.List;
+
 
 public class User {
   public User() {

@@ -70,7 +70,7 @@ a {
 </nav>
                     
                    <a style="margin-left:550px;" href="customerDetailsRegister.jsp">Add Customer Property Details</a><br>
-                   <a style="margin-left:550px;" href="">Customer Property Details</a>
+                   <a style="margin-left:550px;" href="/readCustomerProperty" method="get">Customer Property Details</a>
                     
 </body>
 </html>

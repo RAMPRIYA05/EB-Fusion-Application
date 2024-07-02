@@ -1,8 +1,8 @@
 package com.chainsys.ebfusion.model;
 
-public class ComplaintDetails {
+public class Complaint {
      
-	public ComplaintDetails() {
+	public Complaint() {
 		
 	}
 	
@@ -43,7 +43,7 @@ public class ComplaintDetails {
 	}
 	@Override
 	public String toString() {
-		return "ComplaintDetails [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", complaintId="
+		return "Complaint [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", complaintId="
 				+ complaintId + ", description=" + description + ", complaintStatus=" + complaintStatus + "]";
 	}
 	

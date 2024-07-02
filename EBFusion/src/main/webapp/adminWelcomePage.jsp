@@ -70,7 +70,7 @@ ul{
   <li><a href="">About Us</a></li>
   <li><a href="">Contact Us</a></li>
    <li><a href="PaymentProcess" method="get">Paid Bills</a></li>
-  <li><a href="ReadCustomerDetails" method="get">Customer Details</a></li>
+  <li><a href="readAll" method="get">Customer Details</a></li>
   <li><a href="listOfUsers" method="get">Registered Customer</a></li>
   
    <li> <a href="adminProfile" method="get">Profile</a></li>

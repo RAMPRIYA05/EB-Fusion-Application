@@ -7,9 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.chainsys.ebfusion.mapper.CustomerDetailsMapper;
+import com.chainsys.ebfusion.mapper.CustomerMapper;
 import com.chainsys.ebfusion.mapper.UserMapper;
-import com.chainsys.ebfusion.model.CustomerDetails;
+import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.User;
 
 @Repository
@@ -18,7 +18,7 @@ public class UserImpl implements UserDAO{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	UserMapper mapper;
-	CustomerDetailsMapper customerMapper;
+	CustomerMapper customerMapper;
 	
 	@Override
 	public void saveDetails(User user) {
@@ -31,22 +31,11 @@ public class UserImpl implements UserDAO{
 	
 
 	@Override
-	public String getAdminPassword(String emailId) {
-		String adminPassword="select password from user where email_id=? and (user_type='admin') and delete_user=0";
+	public String getPassword(String emailId) {
+		String adminPassword="select password from user where email_id=? and delete_user=0";
 		String	password=jdbcTemplate.queryForObject(adminPassword, String.class,emailId);
         return password;
 	}
-
-
-
-	@Override
-	public String getUserPassword(String emailId) {
-		String userPassword="select password from user where email_id=? and (user_type='User') and delete_user=0";
-		String password=jdbcTemplate.queryForObject(userPassword, String.class,emailId);
-        return password;	
-	}
-
-
 
 	@Override
 	public String getUserEmailId(String emailId) {
@@ -111,10 +100,43 @@ public class UserImpl implements UserDAO{
         return jdbcTemplate.query(retrive, new UserMapper());
     }
 	@Override
-	public void customerPropertyDetails(CustomerDetails customerDetails) {
+	public void customerPropertyDetails(Customer customer) {
 		
 		String insert="insert into customer_details(email_id,service_number,address,district,state)values(?,?,?,?,?)";
-		 Object[] params= {customerDetails.getEmailId(),customerDetails.getServiceNumber(),customerDetails.getAddress(),customerDetails.getDistrict(),customerDetails.getState()};
+		 Object[] params= {customer.getEmailId(),customer.getServiceNumber(),customer.getAddress(),customer.getDistrict(),customer.getState()};
   	   int rows=jdbcTemplate.update(insert,params);   	
 	}
+	
+	@Override
+	public List<Customer> readCustomerDetails(String email) {
+		String read="Select email_id,service_number,address,district,state from customer_details where email_id=? ";
+		List<Customer> list=jdbcTemplate.query(read, new CustomerMapper(),email);		
+		return list;
+		
+	}
+ 
+
+
+	@Override
+	public List<Customer> searchCustomerDetails(String emailId) {
+		String retrive=String.format
+				(
+						"SELECT email_id,service_number,address,district,state FROM customer_details"+
+	 "WHERE (email_id LIKE '%%%s%%' OR service_number LIKE '%%%s%%' OR address LIKE '%%%s%%' OR district LIKE '%%%s%%' OR state LIKE '%%%s%%')",
+		emailId,emailId,emailId,emailId,emailId
+		);
+	        return jdbcTemplate.query(retrive, new CustomerMapper());
+	}
+
+
+
+	@Override
+	public List<Customer> readCustomer() {
+	String read="SELECT email_id,service_number,address,district,state from customer_details";
+	List<Customer> list=jdbcTemplate.query(read,new CustomerMapper());
+		return list;
+		
+
+	}
+
 }
