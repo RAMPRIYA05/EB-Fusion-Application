@@ -69,7 +69,8 @@ a {
   <li><a href="">LogOut</a></li>
 </nav>
                     
-                   
+                   <a style="margin-left:550px;" href="customerDetailsRegister.jsp">Add Customer Property Details</a><br>
+                   <a style="margin-left:550px;" href="">Customer Property Details</a>
                     
 </body>
 </html>

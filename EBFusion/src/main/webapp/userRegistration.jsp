@@ -76,16 +76,51 @@ a:hover {
 
 <form action="UserServlet" method="post">
     <fieldset>
-        <h2>Customer Registration</h2>
-        Name:<input type="text" placeholder="Enter your name" name="name" pattern="^[A-Za-z]+$" required><br>
-        <br>Email Id:<input type="email" placeholder="Enter your EmailId" name="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>
-        <br>Password:<input type="password" placeholder="Enter your Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
-        <br>Phone Number:<input type="tel" placeholder="Enter your Phone Number" name="phoneNumber" pattern="[0-9]{10}" required><br>
-        <br>Aadhaar Number:<input type="number" placeholder="Enter your Aadhaar Number" name="aadhaarNumber" pattern="[0-9]{12}" required><br>
-        <br><button type="submit">Register</button>
+        <h2>Registration</h2>
+        Name:<input type="text" placeholder="Enter your name" name="name" id="name" pattern="^[A-Za-z]+$" required><br>
+        <br>Email Id:<input type="email" placeholder="Enter your EmailId" name="emailId" id=="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>
+        <br>Password:<input type="password" placeholder="Enter your Password" name="password" id=="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
+        <br>Phone Number:<input type="tel" placeholder="Enter your Phone Number" name="phoneNumber" id="phoneNumber" pattern="[0-9]{10}" required><br>
+        <br>Aadhaar Number:<input type="number" placeholder="Enter your Aadhaar Number" name="aadhaarNumber" id="aadhaarNumber" pattern="[0-9]{12}" required><br>
+        <br><button type="submit" onclick="validation()">Register</button>
         <a href="logIn.jsp">or LogIn</a>
     </fieldset>
 </form>
 
+<script type="text/javascript">
+
+function validation() {
+   var name=document.getElementById("name");
+   var emailId=document.getElementById("emailId");
+   var password=document.getElementById("password");
+   var phoneNumber = document.getElementById("phoneNumber");
+   var aadhaarNumber = document.getElementById("aadhaarNumber");
+   
+   if(!name.checkValidity())
+   {
+	   alert("Name must be filled out in alphabets");
+	   return false; 
+	}
+   if(!emailId.checkValidity()){
+	   alert("EmailId must be filled out");
+	   return false;
+   }
+   if(!password.checkValidity()){
+	   alert("Password must be in one uppercase,one lowercase,one numbers,one special characters,and length 8");
+	   return false;
+   }
+   if (!phoneNumber.checkValidity()) {
+       alert("Phone Number must be a 10-digit number.");
+       return false;
+   }
+   if (!aadhaarNumber.checkValidity()) {
+       alert("Aadhaar Number must be a 12-digit number.");
+       return false;
+   }
+   return true;
+   
+}
+
+</script>
 </body>
 </html>

@@ -7,7 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.chainsys.ebfusion.mapper.CustomerDetailsMapper;
 import com.chainsys.ebfusion.mapper.UserMapper;
+import com.chainsys.ebfusion.model.CustomerDetails;
 import com.chainsys.ebfusion.model.User;
 
 @Repository
@@ -16,7 +18,8 @@ public class UserImpl implements UserDAO{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	UserMapper mapper;
-
+	CustomerDetailsMapper customerMapper;
+	
 	@Override
 	public void saveDetails(User user) {
 		
@@ -96,4 +99,22 @@ public class UserImpl implements UserDAO{
 	jdbcTemplate.update(delete,params);		
 	}
 	
+	@Override
+	public List<User> searchUser(String emailId){
+		 String retrive = String.format 
+	                (
+	                    "SELECT name,email_id,password,phone_number,aadhaar_number FROM user " +
+	                    "WHERE (name LIKE '%%%s%%' OR email_id LIKE '%%%s%%' OR phone_number LIKE '%%%s%%' OR aadhaar_number LIKE '%%%s%%' ) " +
+	                    "AND delete_user=0",
+	                    emailId, emailId, emailId, emailId
+	                );
+        return jdbcTemplate.query(retrive, new UserMapper());
+    }
+	@Override
+	public void customerPropertyDetails(CustomerDetails customerDetails) {
+		
+		String insert="insert into customer_details(email_id,service_number,address,district,state)values(?,?,?,?,?)";
+		 Object[] params= {customerDetails.getEmailId(),customerDetails.getServiceNumber(),customerDetails.getAddress(),customerDetails.getDistrict(),customerDetails.getState()};
+  	   int rows=jdbcTemplate.update(insert,params);   	
+	}
 }

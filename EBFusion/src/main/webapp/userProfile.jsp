@@ -189,6 +189,8 @@ margin-left:500px;
     </thead>
     
 <%List<User> list=(ArrayList<User>)request.getAttribute("list");
+if (list != null && !list.isEmpty()) {
+
 for(User obj:list)
 {
 %>
@@ -207,18 +209,21 @@ for(User obj:list)
 			</td>
 
 			<td>
-				<form action="/userDelete" method="get">
+				<form action="/deleteUser" method="get">
 					<input type="hidden" name="emailId" value="<%=obj.getEmailId()%>">
 					<button>Delete</button>
 				</form>
 			</td>      
-
-        
-        
-
-
-
 </tr>
+
+<%
+		}
+		} else {
+		%>
+		<tr>
+			<td colspan="15">No users found.</td>
+		</tr>
+
 <%
 }
 %>

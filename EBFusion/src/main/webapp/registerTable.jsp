@@ -182,9 +182,9 @@ margin-left:500px;
         </header> 
 <h2>Registered Customer</h2>
 
-<form action="ReadCustomerDetails" method="post"> 
+<form action="searchUser" method="get"> 
          
-         <h4>Search:<input type="email" placeholder="Enter your Search EmailId" name="emailId" required><br></h4>
+         <h4>Search:<input type="search" placeholder="Enter your Search EmailId" name="emailId" id="emailId" required><br></h4>
  </form>
      <table border="1">
     <thead>

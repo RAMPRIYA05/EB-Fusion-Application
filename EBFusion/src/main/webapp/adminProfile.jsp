@@ -171,10 +171,7 @@ margin-left:550px;
         </header> 
 <h2>Admin Profile</h2>
 
-<form action="ReadCustomerDetails" method="post"> 
-         
-        
- </form>
+
      <table border="1">
     <thead>
     <tr>

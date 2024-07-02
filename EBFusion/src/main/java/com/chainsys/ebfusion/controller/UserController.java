@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.ebfusion.dao.UserDAO;
+import com.chainsys.ebfusion.model.CustomerDetails;
 import com.chainsys.ebfusion.model.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -60,7 +61,7 @@ public class UserController {
                 }
                 else
                 {
-                    return "login.jsp";
+                    return "logIn.jsp";
                 }
             }
             else if(emailId.equals(userDAO.getUserEmailId(emailId)))
@@ -72,13 +73,13 @@ public class UserController {
                 }
                 else
                 {
-                    return "login.jsp";
+                    return "logIn.jsp";
                 }
             }
 
             else
             {
-                return "login.jsp";
+                return "logIn.jsp";
             }   
         }  
         catch (Exception e) 
@@ -124,7 +125,7 @@ public class UserController {
 		user.setAadhaarNumber(aadhaarNumber);
 		user.setEmailId(emailId);
 		userDAO.update(user);
-		List<User> list=userDAO.getAdmin("emailID");
+		List<User> list=userDAO.getAdmin(emailId);
 		model.addAttribute("list",list);
 		return "adminProfile.jsp";
 	}
@@ -134,7 +135,7 @@ public class UserController {
 		User user=new User();
 		user.setEmailId(emailId);
 		userDAO.delete(user);
-		List<User> list=userDAO.getAdmin("emailID");
+		List<User> list=userDAO.getAdmin(emailId);
 		model.addAttribute("list",list);
 		return "adminProfile.jsp";
 	}
@@ -170,10 +171,18 @@ public class UserController {
 		User user=new User();
 		user.setEmailId(emailId);
 		userDAO.delete(user);
-		
-		List<User> list=userDAO.getUser("email");
+		List<User> list=userDAO.getUser(emailId);
 		model.addAttribute("list",list);
 		return "userProfile.jsp";
 	}
+	
+	@GetMapping("/searchUser")
+	public String searchDetails(@RequestParam("emailId")String emailId,Model model)
+	{		
+		List<User> list=userDAO.searchUser(emailId);
+		model.addAttribute("list",list);
+		return "registerTable.jsp";
+	}
+	
 	
 }
