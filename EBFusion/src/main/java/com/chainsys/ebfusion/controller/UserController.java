@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.chainsys.ebfusion.dao.UserDAO;
 import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.User;
+import com.chainsys.ebfusion.validation.Validation;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +25,8 @@ public class UserController {
     UserDAO userDAO;
 	JdbcTemplate jdbcTemplate;
 	
+	@Autowired
+	Validation validate;
 	@RequestMapping("/home")
 	public String home()
 	{
@@ -32,14 +35,28 @@ public class UserController {
 	
 	
 	@PostMapping("/UserServlet")
-	public String saveDetails(@RequestParam("name")String name,@RequestParam("emailId")String emailId,@RequestParam("password")String password,@RequestParam("phoneNumber")long phoneNumber,@RequestParam("aadhaarNumber")long aadhaarNumber)
+	public String saveDetails(@RequestParam("name")String name,@RequestParam("emailId")String emailId,@RequestParam("password")String password,@RequestParam("phoneNumber")long phoneNumber,@RequestParam("aadhaarNumber")long aadhaarNumber,Model model)
 	{
+		
 		User user=new User();
-		user.setName(name);
+		Validation validate = new Validation();
+		if(Boolean.FALSE.equals(validate.nameValidation(name, model))){
+
+			user.setName(name);
+			
+		}
+		if(Boolean.FALSE.equals(validate.emailIdValidation(emailId, model))){
 		user.setEmailId(emailId);
+		}
+		if(Boolean.FALSE.equals(validate.passwordValidation(password, model))){
 		user.setPassword(password);
+		}
+		if(Boolean.FALSE.equals(validate.phoneNumberValidation(phoneNumber, model))){
 		user.setPhoneNumber(phoneNumber);
+		}
+		if(Boolean.FALSE.equals(validate.aadhaarNumberValidation(aadhaarNumber, model))){
 		user.setAadhaarNumber(aadhaarNumber);
+		}
 		user.setUserType("User");
 		userDAO.saveDetails(user);
 		return "logIn.jsp";

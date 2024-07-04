@@ -5,20 +5,91 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: bisque;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 20%;
+    margin: 0 auto;
+    margin-top:8%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+fieldset {
+    border: none;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+button {
+    background-color: slateblue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+}
+
+a {
+    color: slateblue;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+</style>
+
+
+
+
 </head>
 <body>
 
 <%
+String name=request.getParameter("name");
 String emailId=request.getParameter("emailId");
+String phoneNumber=request.getParameter("phoneNumber");
+String aadhaarNumber=request.getParameter("aadhaarNumber");
 %>
 
 <form action="/updateAdmin" method="get">
- Name: <input type="text" placeholder="Enter your new name" name="name" pattern="^[A-Za-z]+$" required><br>
- EmailId:<input type="email" name="emailId" value="<%=emailId %>" readonly>
- Phone Number:<input type="tel" name="phoneNumber" pattern="[0-9]{10}" required>
- Aadhaar Number:<input type="number" name="aadhaarNumber" pattern="[0-9]{12}" required>
+<h2>Admin Profile</h2>
+ Name: <input type="text" placeholder="Enter your new name" name="name" id="name" pattern="^[A-Za-z]+$" value="<%=name%>" required><br>
+ EmailId:<input type="email" name="emailId" id="emailId" value="<%=emailId %>" readonly>
+ Phone Number:<input type="tel" name="phoneNumber" id="phoneNumber" pattern="[0-9]{10}" value="<%=phoneNumber%>" required>
+ Aadhaar Number:<input type="text" name="aadhaarNumber" id="aadhaarNumber" pattern="^[2-9][0-9]{3}\s[0-9]{4}\s[0-9]{4}$" value="<%=aadhaarNumber%>" required>
  
- <button onclick="validation()">Update</button>
+ <button type="submit" onclick="validation()">Update</button>
  </form>
  
  <script type="text/javascript">

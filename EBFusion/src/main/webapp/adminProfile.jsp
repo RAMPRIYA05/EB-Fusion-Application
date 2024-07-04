@@ -202,8 +202,10 @@ for(User obj:list)
         
   <td>
 				<form action="updateAdminProfile.jsp">
+				    <input type="hidden" name="name" value="<%=obj.getName()%>">
 					<input type="hidden" name="emailId" value="<%=obj.getEmailId()%>">
-
+                    <input type="hidden" name="phoneNumber" value="<%=obj.getPhoneNumber()%>">
+                    <input type="hidden" name="aadhaarNumber" value="<%=obj.getAadhaarNumber()%>">
 					<button>Update</button>
 				</form>
 			</td>
@@ -211,6 +213,7 @@ for(User obj:list)
 			<td>
 				<form action="/deleteAdmin" method="get">
 					<input type="hidden" name="emailId" value="<%=obj.getEmailId()%>">
+					
 					<button>Delete</button>
 				</form>
 			</td>      

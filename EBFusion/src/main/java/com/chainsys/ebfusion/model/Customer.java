@@ -9,9 +9,11 @@ public class Customer {
 	}
 	String emailId;
 	long serviceNumber;
+	String serviceType;
 	String address;
 	String district;
 	String state;
+	String connectionStatus;
 	public String getEmailId() {
 		return emailId;
 	}
@@ -24,6 +26,13 @@ public class Customer {
 	}
 	public void setServiceNumber(long serviceNumber) {
 		this.serviceNumber = serviceNumber;
+	}
+	
+	public String getServiceType() {
+		return serviceType;
+	}
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
 	}
 	public String getAddress() {
 		return address;
@@ -43,10 +52,19 @@ public class Customer {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	public String getConnectionStatus() {
+		return connectionStatus;
+	}
+	public void setConnectionStatus(String connectionStatus) {
+		this.connectionStatus = connectionStatus;
+	}
 	@Override
 	public String toString() {
-		return "Customer [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", address=" + address
-				+ ", district=" + district + ", state=" + state + "]";
+		return "Customer [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", serviceType=" + serviceType
+				+ ", address=" + address + ", district=" + district + ", state=" + state + ", connectionStatus="
+				+ connectionStatus + "]";
 	}
+		
 	
 }

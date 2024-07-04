@@ -202,8 +202,10 @@ for(User obj:list)
         
 <td>
 				<form action="updateUserProfile.jsp">
+				    <input type="hidden" name="name" value="<%=obj.getName()%>">
 					<input type="hidden" name="emailId" value="<%=obj.getEmailId()%>">
-
+                    <input type="hidden" name="phoneNumber" value="<%=obj.getPhoneNumber()%>">
+                    <input type="hidden" name="aadhaarNumber" value="<%=obj.getAadhaarNumber()%>">
 					<button>Update</button>
 				</form>
 			</td>

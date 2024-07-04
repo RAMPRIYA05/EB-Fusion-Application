@@ -83,7 +83,7 @@ ul{
                     
                     
                 
-
-
+<a style="margin-left:550px;" href="readAllConnection" method="get">New Connection Applied Customer</a><br>
+<a style="margin-left:550px;" href="/approvedConnection" method="get">Approved Customer Connection</a>
 </body>
 </html>

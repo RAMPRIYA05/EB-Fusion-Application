@@ -99,44 +99,85 @@ public class UserImpl implements UserDAO{
 	                );
         return jdbcTemplate.query(retrive, new UserMapper());
     }
-	@Override
-	public void customerPropertyDetails(Customer customer) {
-		
-		String insert="insert into customer_details(email_id,service_number,address,district,state)values(?,?,?,?,?)";
-		 Object[] params= {customer.getEmailId(),customer.getServiceNumber(),customer.getAddress(),customer.getDistrict(),customer.getState()};
-  	   int rows=jdbcTemplate.update(insert,params);   	
-	}
+//	@Override
+//	public void customerPropertyDetails(Customer customer) {
+//		
+//		String insert="insert into customer_details(email_id,service_number,service_type,address,district,state)values(?,?,?,?,?,?)";
+//		 Object[] params= {customer.getEmailId(),customer.getServiceNumber(),customer.getServiceNumber(),customer.getAddress(),customer.getDistrict(),customer.getState()};
+//  	   int rows=jdbcTemplate.update(insert,params);   	
+//	}
+//	
+//	@Override
+//	public List<Customer> readCustomerDetails(String email) {
+//		String read="Select email_id,service_number,service_type,address,district,state from customer_details where email_id=? ";
+//		List<Customer> list=jdbcTemplate.query(read, new CustomerMapper(),email);		
+//		return list;
+//		
+//	}
+// 
+//
+//
+//	@Override
+//	public List<Customer> searchCustomerDetails(String emailId) {
+//		String retrive=String.format
+//				(
+//						"SELECT email_id,service_number,service_type,address,district,state FROM customer_details"+
+//	 "WHERE (email_id LIKE '%%%s%%' OR service_number LIKE '%%%s%%' OR address LIKE '%%%s%%' OR district LIKE '%%%s%%' OR state LIKE '%%%s%%')",
+//		emailId,emailId,emailId,emailId,emailId
+//		);
+//	        return jdbcTemplate.query(retrive, new CustomerMapper());
+//	}
+//
+
+
+//	@Override
+//	public List<Customer> readCustomer() {
+//	String read="SELECT email_id,service_number,service_type,address,district,state from customer_details";
+//	List<Customer> list=jdbcTemplate.query(read,new CustomerMapper());
+//		return list;
+//		
+//
+//	}
+
 	
 	@Override
-	public List<Customer> readCustomerDetails(String email) {
-		String read="Select email_id,service_number,address,district,state from customer_details where email_id=? ";
+	public void applyConnection(Customer customer) {
+		
+		String insert="insert into customer_details(email_id,service_number,service_type,address,district,state,connection_status)values(?,?,?,?,?,?,?)";
+		 Object[] params= {customer.getEmailId(),customer.getServiceNumber(),customer.getServiceType(),customer.getAddress(),customer.getDistrict(),customer.getState(),customer.getConnectionStatus()};
+  	   int rows=jdbcTemplate.update(insert,params);   	
+	}
+	@Override
+	public List<Customer> readApplyConnection(String email) {
+		String read="Select email_id,service_number,service_type,address,district,state,connection_status from customer_details where email_id=? and connection_status='applied'";
 		List<Customer> list=jdbcTemplate.query(read, new CustomerMapper(),email);		
 		return list;
 		
 	}
- 
+
 
 
 	@Override
-	public List<Customer> searchCustomerDetails(String emailId) {
-		String retrive=String.format
-				(
-						"SELECT email_id,service_number,address,district,state FROM customer_details"+
-	 "WHERE (email_id LIKE '%%%s%%' OR service_number LIKE '%%%s%%' OR address LIKE '%%%s%%' OR district LIKE '%%%s%%' OR state LIKE '%%%s%%')",
-		emailId,emailId,emailId,emailId,emailId
-		);
-	        return jdbcTemplate.query(retrive, new CustomerMapper());
+	public List<Customer> readAllApplyConnection() {
+		String read="SELECT email_id,service_number,service_type,address,district,state,connection_status from customer_details where connection_status='applied'";
+		List<Customer> list=jdbcTemplate.query(read,new CustomerMapper());
+			return list;
+	
 	}
 
 
 
 	@Override
-	public List<Customer> readCustomer() {
-	String read="SELECT email_id,service_number,address,district,state from customer_details";
-	List<Customer> list=jdbcTemplate.query(read,new CustomerMapper());
+	public List<Customer> readApprovedConnection(String email) {
+		String read="Select email_id,service_number,service_type,address,district,state,connection_status from customer_details where email_id=? and connection_status='approved'";
+		List<Customer> list=jdbcTemplate.query(read, new CustomerMapper(),email);		
 		return list;
-		
-
 	}
-
+	
+	@Override
+	public void adminApproveConnection(Customer customer) {
+	String delete="update customer_details set connection_status='approved' where service_number=?";
+	Object[] params= {customer.getServiceNumber()};
+	jdbcTemplate.update(delete,params);		
+	}
 }

@@ -74,14 +74,14 @@ a:hover {
 </head>
 <body>
 
-<form action="UserServlet" method="post">
+<form action="/UserServlet" method="post">
     <fieldset>
         <h2>Registration</h2>
         Name:<input type="text" placeholder="Enter your name" name="name" id="name" pattern="^[A-Za-z]+$" required><br>
-        <br>Email Id:<input type="email" placeholder="Enter your EmailId" name="emailId" id=="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>
-        <br>Password:<input type="password" placeholder="Enter your Password" name="password" id=="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
+        <br>Email Id:<input type="email" placeholder="Enter your EmailId" name="emailId" id="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>                                                                                                                           
+        <br>Password:<input type="password" placeholder="Enter your Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
         <br>Phone Number:<input type="tel" placeholder="Enter your Phone Number" name="phoneNumber" id="phoneNumber" pattern="[0-9]{10}" required><br>
-        <br>Aadhaar Number:<input type="number" placeholder="Enter your Aadhaar Number" name="aadhaarNumber" id="aadhaarNumber" pattern="[0-9]{12}" required><br>
+        <br>Aadhaar Number:<input type="text" placeholder="Enter your Aadhaar Number" name="aadhaarNumber" id="aadhaarNumber" pattern="^[2-9][0-9]{3}\s[0-9]{4}\s[0-9]{4}$" required><br>
         <br><button type="submit" onclick="validation()">Register</button>
         <a href="logIn.jsp">or LogIn</a>
     </fieldset>

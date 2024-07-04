@@ -69,8 +69,11 @@ a {
   <li><a href="">LogOut</a></li>
 </nav>
                     
-                   <a style="margin-left:550px;" href="customerDetailsRegister.jsp">Add Customer Property Details</a><br>
-                   <a style="margin-left:550px;" href="/readCustomerProperty" method="get">Customer Property Details</a>
-                    
+                   <!-- <a style="margin-left:550px;" href="customerDetailsRegister.jsp">Add Customer Property Details</a><br>
+                   <a style="margin-left:550px;" href="/readCustomerProperty" method="get">Customer Property Details</a> -->
+                   <a style="margin-left:550px;" href="applyNewConnection.jsp">Apply for new Connection</a>
+                     <a style="margin-left:550px;" href="/readAppliedConnection" method="get">Applied Connection</a><br>
+                     <a style="margin-left:550px;" href="/approvedConnection" method="get">Connection Details</a>
+
 </body>
 </html>

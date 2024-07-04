@@ -75,10 +75,10 @@ button:hover{
 <form action="Login" method="post">
     <h2>LogIn</h2>
     Email Id:<br>
-    <input type="email" placeholder="Enter your Email Id" name="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>
+    <input type="email" placeholder="Enter your Email Id" name="emailId" id="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" required><br>
     
     Password:<br>
-    <input type="password" placeholder="Enter your Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
+    <input type="password" placeholder="Enter your Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required><br>
   
     <button type="submit" onclick="validation()">Submit</button><br>
     

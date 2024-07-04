@@ -20,8 +20,15 @@ public interface UserDAO {
 	void delete(User user);
 	List<User> searchUser(String emailId);
 	
-	void customerPropertyDetails(Customer customer);
-	List<Customer> readCustomerDetails(String email);
-	public List<Customer> searchCustomerDetails(String emailId);
-	public List<Customer> readCustomer();
+//	void customerPropertyDetails(Customer customer);
+//	List<Customer> readCustomerDetails(String email);
+//	public List<Customer> searchCustomerDetails(String emailId);
+//	public List<Customer> readCustomer();
+	void applyConnection(Customer customer);
+	List<Customer> readApplyConnection(String email);
+	
+	List<Customer> readAllApplyConnection();
+	public List<Customer> readApprovedConnection(String email);
+
+	void adminApproveConnection(Customer customer);
 }
