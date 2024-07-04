@@ -5,24 +5,42 @@ public class Bill {
 	public Bill() {
 		
 	}
+	int id;
 	String emailId;
-	int serviceNumber;
+	long serviceNumber;
+	String serviceType;
+	String address;
 	double readingUnits;
     String readingTakenDate;
     String dueDate;
-    String serviceType;
     double amount;
+    
+    
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getEmailId() {
 		return emailId;
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getServiceNumber() {
+	
+	
+	public long getServiceNumber() {
 		return serviceNumber;
 	}
-	public void setServiceNumber(int serviceNumber) {
+	public void setServiceNumber(long serviceNumber) {
 		this.serviceNumber = serviceNumber;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public double getReadingUnits() {
 		return readingUnits;
@@ -56,10 +74,12 @@ public class Bill {
 	}
 	@Override
 	public String toString() {
-		return "Bill [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", readingUnits=" + readingUnits
-				+ ", readingTakenDate=" + readingTakenDate + ", dueDate=" + dueDate + ", serviceType=" + serviceType
-				+ ", amount=" + amount + "]";
+		return "Bill [id=" + id + ", emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", serviceType="
+				+ serviceType + ", address=" + address + ", readingUnits=" + readingUnits + ", readingTakenDate="
+				+ readingTakenDate + ", dueDate=" + dueDate + ", amount=" + amount + "]";
 	}
+	
+	
 	
 	
 }

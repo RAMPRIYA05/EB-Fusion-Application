@@ -81,10 +81,10 @@ String aadhaarNumber=request.getParameter("aadhaarNumber");
 
 <form action="/updateUser" method="get">
 <h2>Update Profile</h2>
- Name: <input type="text" placeholder="Enter your new name" name="name" id="name" pattern="^[A-Za-z]+$" value="<%=name%>" required><br>
+ Name: <input type="text" placeholder="Enter your new name" name="name" id="name" pattern="^[A-Za-z]+$" value="<%=name%>" readonly><br>
  EmailId:<input type="email" name="emailId" value="<%=emailId %>" readonly>
  Phone Number:<input type="tel" name="phoneNumber" id="phoneNumber" pattern="[0-9]{10}" value="<%=phoneNumber%>" required>
- Aadhaar Number:<input type="text" name="aadhaarNumber" id="aadhaarNumber" pattern="^[2-9][0-9]{3}\s[0-9]{4}\s[0-9]{4}$" value="<%=aadhaarNumber%>" required>
+ Aadhaar Number:<input type="text" name="aadhaarNumber" id="aadhaarNumber" pattern="^[2-9][0-9]{3}\s[0-9]{4}\s[0-9]{4}$" value="<%=aadhaarNumber%>" readonly>
  
  <button type="submit" onclick="validation()">Update</button>
  </form>

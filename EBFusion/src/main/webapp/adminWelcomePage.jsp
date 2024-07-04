@@ -69,8 +69,7 @@ ul{
   <li><a href="">Home</a><li>
   <li><a href="">About Us</a></li>
   <li><a href="">Contact Us</a></li>
-   <li><a href="PaymentProcess" method="get">Paid Bills</a></li>
-  <li><a href="readAll" method="get">Customer Details</a></li>
+   
   <li><a href="listOfUsers" method="get">Registered Customer</a></li>
   
    <li> <a href="adminProfile" method="get">Profile</a></li>
@@ -84,6 +83,9 @@ ul{
                     
                 
 <a style="margin-left:550px;" href="readAllConnection" method="get">New Connection Applied Customer</a><br>
-<a style="margin-left:550px;" href="/approvedConnection" method="get">Approved Customer Connection</a>
+<a style="margin-left:550px;" href="/allApprovedConnection" method="get">Approved Customer Connection</a>
+<a style="margin-left:550px;" href="readAllBill" method="get">UnPaid Bills</a><br>
+<a style="margin-left:550px;" href="" method="">Paid Bills</a>
+
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.chainsys.ebfusion.model;
 
+import java.util.Arrays;
+
 public class Customer {
 
 	
@@ -13,6 +15,7 @@ public class Customer {
 	String address;
 	String district;
 	String state;
+	byte[] addressProof;
 	String connectionStatus;
 	public String getEmailId() {
 		return emailId;
@@ -53,6 +56,12 @@ public class Customer {
 		this.state = state;
 	}
 	
+	public byte[] getAddressProof() {
+		return addressProof;
+	}
+	public void setAddressProof(byte[] addressProof) {
+		this.addressProof = addressProof;
+	}
 	public String getConnectionStatus() {
 		return connectionStatus;
 	}
@@ -62,9 +71,10 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", serviceType=" + serviceType
-				+ ", address=" + address + ", district=" + district + ", state=" + state + ", connectionStatus="
-				+ connectionStatus + "]";
+				+ ", address=" + address + ", district=" + district + ", state=" + state + ", addressProof="
+				+ Arrays.toString(addressProof) + ", connectionStatus=" + connectionStatus + "]";
 	}
+	
 		
 	
 }

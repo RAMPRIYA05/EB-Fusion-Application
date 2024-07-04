@@ -40,26 +40,19 @@ public class UserController {
 		
 		User user=new User();
 		Validation validate = new Validation();
-		if(Boolean.FALSE.equals(validate.nameValidation(name, model))){
-
-			user.setName(name);
-			
-		}
-		if(Boolean.FALSE.equals(validate.emailIdValidation(emailId, model))){
-		user.setEmailId(emailId);
-		}
-		if(Boolean.FALSE.equals(validate.passwordValidation(password, model))){
-		user.setPassword(password);
-		}
-		if(Boolean.FALSE.equals(validate.phoneNumberValidation(phoneNumber, model))){
-		user.setPhoneNumber(phoneNumber);
-		}
-		if(Boolean.FALSE.equals(validate.aadhaarNumberValidation(aadhaarNumber, model))){
-		user.setAadhaarNumber(aadhaarNumber);
-		}
-		user.setUserType("User");
+		    user.setName(name);
+			user.setEmailId(emailId);
+			user.setPassword(password);
+			user.setPhoneNumber(phoneNumber);	
+			user.setAadhaarNumber(aadhaarNumber);	
+			user.setUserType("User");
+		if(Boolean.FALSE.equals(validate.nameValidation(name, model)) || Boolean.FALSE.equals(validate.emailIdValidation(emailId, model)) || Boolean.FALSE.equals(validate.passwordValidation(password, model)) || Boolean.FALSE.equals(validate.phoneNumberValidation(phoneNumber, model)) || Boolean.FALSE.equals(validate.aadhaarNumberValidation(aadhaarNumber, model))){   
 		userDAO.saveDetails(user);
 		return "logIn.jsp";
+		}
+		else {
+			return "userRegistration.jsp";
+		}
 		
 	}
 	

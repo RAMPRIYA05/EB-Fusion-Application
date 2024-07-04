@@ -74,6 +74,8 @@ a {
                    <a style="margin-left:550px;" href="applyNewConnection.jsp">Apply for new Connection</a>
                      <a style="margin-left:550px;" href="/readAppliedConnection" method="get">Applied Connection</a><br>
                      <a style="margin-left:550px;" href="/approvedConnection" method="get">Connection Details</a>
+                     <a style="margin-left:550px;" href="/readParticularBill" method="get">View Bill</a>
+                     
 
 </body>
 </html>
