@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chainsys.ebfusion.mapper.BillMapper;
 import com.chainsys.ebfusion.mapper.CustomerMapper;
+import com.chainsys.ebfusion.mapper.PaymentMapper;
 import com.chainsys.ebfusion.mapper.UserMapper;
 import com.chainsys.ebfusion.model.Bill;
 import com.chainsys.ebfusion.model.Customer;
+import com.chainsys.ebfusion.model.Payment;
 import com.chainsys.ebfusion.model.User;
 
 @Repository
@@ -20,6 +22,7 @@ public class UserImpl implements UserDAO{
 	UserMapper mapper;
 	CustomerMapper customerMapper;
 	BillMapper billMapper;
+	PaymentMapper paymentMapper;
 	
 	@Override
 	public void saveDetails(User user) {		
@@ -152,5 +155,27 @@ public class UserImpl implements UserDAO{
 		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount from bill where email_id=?";
 		List<Bill> list=jdbcTemplate.query(read, new BillMapper(),email);		
 		return list;		
+	}
+
+	@Override
+	public void payAmount(Payment payment) {
+		String insert="insert into payment(payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount)values(?,?,?,?,?,?,?,?)";
+		 Object[] params= {payment.getPaymentId(),payment.getEmailId(),payment.getServiceNumber(),payment.getAmount(),payment.getAccountNumber(),payment.getPaymentDate(),payment.getTotalAmount(),payment.getPayedAmount()};		
+		 int rows=jdbcTemplate.update(insert,params);  
+		
+	}
+
+	@Override
+	public List<Payment> checkPayment(String email) {
+		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount from payment where email_id=?";
+		List<Payment> list=jdbcTemplate.query(read, new PaymentMapper(),email);		
+		return list;	
+	}
+
+	@Override
+	public List<Payment> viewPayment() {
+		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount from payment";
+		List<Payment> list=jdbcTemplate.query(read, new PaymentMapper());		
+		return list;	
 	}
 }

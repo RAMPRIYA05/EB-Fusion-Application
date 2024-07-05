@@ -73,9 +73,9 @@ a {
                    <a style="margin-left:550px;" href="/readCustomerProperty" method="get">Customer Property Details</a> -->
                    <a style="margin-left:550px;" href="applyNewConnection.jsp">Apply for new Connection</a>
                      <a style="margin-left:550px;" href="/readAppliedConnection" method="get">Applied Connection</a><br>
-                     <a style="margin-left:550px;" href="/approvedConnection" method="get">Connection Details</a>
-                     <a style="margin-left:550px;" href="/readParticularBill" method="get">View Bill</a>
-                     
+                     <a style="margin-left:550px;" href="/approvedConnection" method="get">Connection Details</a><br>
+                     <a style="margin-left:550px;" href="/readParticularBill" method="get">View Bill</a><br>
+                     <a style="margin-left:550px;" href="/viewPayedStatus" method="get">View Payed Bill</a>
 
 </body>
 </html>

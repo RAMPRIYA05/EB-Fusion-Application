@@ -6,10 +6,11 @@ public class Payment {
 		
 	}
 	String emailId;
-	int serviceNumber;
+	long serviceNumber;
 	int paymentId;
 	double amount;
 	long accountNumber;
+	String dueDate;
 	String paymentDate;
 	double totalAmount;
 	double payedAmount;
@@ -19,10 +20,10 @@ public class Payment {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getServiceNumber() {
+	public long getServiceNumber() {
 		return serviceNumber;
 	}
-	public void setServiceNumber(int serviceNumber) {
+	public void setServiceNumber(long serviceNumber) {
 		this.serviceNumber = serviceNumber;
 	}
 	public int getPaymentId() {
@@ -42,6 +43,13 @@ public class Payment {
 	}
 	public void setAccountNumber(long accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+	
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 	public String getPaymentDate() {
 		return paymentDate;
@@ -64,8 +72,8 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", paymentId=" + paymentId
-				+ ", amount=" + amount + ", accountNumber=" + accountNumber + ", paymentDate=" + paymentDate
-				+ ", totalAmount=" + totalAmount + ", payedAmount=" + payedAmount + "]";
+				+ ", amount=" + amount + ", accountNumber=" + accountNumber + ", dueDate=" + dueDate + ", paymentDate="
+				+ paymentDate + ", totalAmount=" + totalAmount + ", payedAmount=" + payedAmount + "]";
 	}
 	
 	

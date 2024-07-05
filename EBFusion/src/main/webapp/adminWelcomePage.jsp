@@ -85,7 +85,7 @@ ul{
 <a style="margin-left:550px;" href="readAllConnection" method="get">New Connection Applied Customer</a><br>
 <a style="margin-left:550px;" href="/allApprovedConnection" method="get">Approved Customer Connection</a>
 <a style="margin-left:550px;" href="readAllBill" method="get">UnPaid Bills</a><br>
-<a style="margin-left:550px;" href="" method="">Paid Bills</a>
+<a style="margin-left:550px;" href="/adminViewPayedStatus" method="get">Paid Bills</a>
 
 </body>
 </html>
