@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.chainsys.ebfusion.model.Bill;
+import com.chainsys.ebfusion.model.Complaint;
 import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.Payment;
 import com.chainsys.ebfusion.model.User;
@@ -29,8 +30,12 @@ public interface UserDAO {
 	public void enterBill(Bill bill);
 	public List<Bill> viewBill();
 	public List<Bill> readBill(String email);
+	List<Bill> readPaidBill(String email);
 	
 	public void payAmount(Payment payment);
 	public List<Payment> checkPayment(String email);
 	public List<Payment> viewPayment();
+	void updatePaidStatus(Payment payment);
+	public void applyComplaint(Complaint complaint);
+	
 }

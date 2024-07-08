@@ -10,6 +10,7 @@ import com.chainsys.ebfusion.mapper.CustomerMapper;
 import com.chainsys.ebfusion.mapper.PaymentMapper;
 import com.chainsys.ebfusion.mapper.UserMapper;
 import com.chainsys.ebfusion.model.Bill;
+import com.chainsys.ebfusion.model.Complaint;
 import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.Payment;
 import com.chainsys.ebfusion.model.User;
@@ -17,7 +18,7 @@ import com.chainsys.ebfusion.model.User;
 @Repository
 public class UserImpl implements UserDAO{
 	
-	@Autowired
+	@Autowired 
 	JdbcTemplate jdbcTemplate;
 	UserMapper mapper;
 	CustomerMapper customerMapper;
@@ -138,44 +139,84 @@ public class UserImpl implements UserDAO{
 	@Override
 	public void enterBill(Bill bill) {
 		
-		String insert="insert into bill(id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount)values(?,?,?,?,?,?,?,?,?)";
-		 Object[] params= {bill.getId(),bill.getEmailId(),bill.getServiceNumber(),bill.getAddress(),bill.getReadingUnits(),bill.getReadingTakenDate(),bill.getDueDate(),bill.getServiceType(),bill.getAmount()};		
+		String insert="insert into bill(id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status)values(?,?,?,?,?,?,?,?,?,?)";
+		 Object[] params= {bill.getId(),bill.getEmailId(),bill.getServiceNumber(),bill.getAddress(),bill.getReadingUnits(),bill.getReadingTakenDate(),bill.getDueDate(),bill.getServiceType(),bill.getAmount(),bill.getBillStatus()};		
 		 int rows=jdbcTemplate.update(insert,params);   
 	}
 	
+	/*
+	 * @Override public void removePaidBill(Bill bill) { String
+	 * delete="update bill set bill_status='Paid' where service_number=?"; Object[]
+	 * params= {bill.getServiceNumber()}; jdbcTemplate.update(delete,params); }
+	 */
 	@Override
 	public List<Bill> viewBill() {
-		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount from bill";
+		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status from bill";
 		List<Bill> list=jdbcTemplate.query(read, new BillMapper());		
 		return list;		
-	}
-
-	@Override
-	public List<Bill> readBill(String email) {
-		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount from bill where email_id=?";
-		List<Bill> list=jdbcTemplate.query(read, new BillMapper(),email);		
-		return list;		
-	}
-
-	@Override
-	public void payAmount(Payment payment) {
-		String insert="insert into payment(payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount)values(?,?,?,?,?,?,?,?)";
-		 Object[] params= {payment.getPaymentId(),payment.getEmailId(),payment.getServiceNumber(),payment.getAmount(),payment.getAccountNumber(),payment.getPaymentDate(),payment.getTotalAmount(),payment.getPayedAmount()};		
-		 int rows=jdbcTemplate.update(insert,params);  
 		
 	}
 
 	@Override
+	public List<Bill> readBill(String email) {
+		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status from bill where email_id=? & bill_status='Not Paid'";
+		List<Bill> list=jdbcTemplate.query(read, new BillMapper(),email);		
+		return list;		
+	}
+
+	
+	@Override
+	public List<Bill> readPaidBill(String email) {
+		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status from bill where email_id=? AND bill_status='Paid'";
+		List<Bill> list=jdbcTemplate.query(read, new BillMapper(),email);		
+		return list;		
+	}
+	
+	@Override
+	public void payAmount(Payment payment) {
+		String insert="insert into payment(payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount,payed_status)values(?,?,?,?,?,?,?,?,?)";
+		 Object[] params= {payment.getPaymentId(),payment.getEmailId(),payment.getServiceNumber(),payment.getAmount(),payment.getAccountNumber(),payment.getPaymentDate(),payment.getTotalAmount(),payment.getPayedAmount(),payment.getPayedStatus()};		
+		 int rows=jdbcTemplate.update(insert,params);  
+		
+	}
+	
+	
+	@Override
+	public void updatePaidStatus(Payment payment) {
+	String delete="update payment set payed_status='Paid' where service_number=?";
+	Object[] params= {payment.getServiceNumber()};
+	jdbcTemplate.update(delete,params);		
+	Bill bill=new Bill();
+	String update="update bill set bill_status='Paid' where service_number=?";
+	Object[] param= {bill.getServiceNumber()};
+	jdbcTemplate.update(update,params);	
+	
+	}
+
+	@Override
 	public List<Payment> checkPayment(String email) {
-		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount from payment where email_id=?";
+		
+		
+		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount,payed_status from payment where email_id=?";
 		List<Payment> list=jdbcTemplate.query(read, new PaymentMapper(),email);		
-		return list;	
+		return list;
+		
 	}
 
 	@Override
 	public List<Payment> viewPayment() {
-		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount from payment";
+		String read="Select payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount,payed_status from payment";
 		List<Payment> list=jdbcTemplate.query(read, new PaymentMapper());		
 		return list;	
 	}
+
+	@Override
+	public void applyComplaint(Complaint complaint) {
+		String insert="insert into complaint(complaint_id,email_id,service_number,description,complaint_status)values(?,?,?,?,?)";
+		Object[] params= {complaint.getComplaintId(),complaint.getComplaintId(),complaint.getServiceNumber(),complaint.getDescription(),complaint.getDescription(),complaint.getComplaintStatus()};
+		int rows=jdbcTemplate.update(insert,params);
+		
+	}
+	
+	
 }

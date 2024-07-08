@@ -14,7 +14,7 @@ public class Bill {
     String readingTakenDate;
     String dueDate;
     double amount;
-    
+    String billStatus;
     
 	public int getId() {
 		return id;
@@ -72,14 +72,20 @@ public class Bill {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	
+	
+	public String getBillStatus() {
+		return billStatus;
+	}
+	public void setBillStatus(String billStatus) {
+		this.billStatus = billStatus;
+	}
 	@Override
 	public String toString() {
 		return "Bill [id=" + id + ", emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", serviceType="
 				+ serviceType + ", address=" + address + ", readingUnits=" + readingUnits + ", readingTakenDate="
-				+ readingTakenDate + ", dueDate=" + dueDate + ", amount=" + amount + "]";
+				+ readingTakenDate + ", dueDate=" + dueDate + ", amount=" + amount + ", billStatus=" + billStatus + "]";
 	}
-	
-	
 	
 	
 }

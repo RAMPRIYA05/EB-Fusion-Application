@@ -194,5 +194,10 @@ public class UserController {
 		return "registerTable.jsp";
 	}
 	
-	
+	@GetMapping("/logOut")
+	public String logOut(HttpSession session)
+	{
+		session.invalidate();
+		return "home.jsp";
+	}
 }

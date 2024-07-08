@@ -7,7 +7,7 @@ public class Complaint {
 	}
 	
 	String emailId;
-	int serviceNumber;
+	long serviceNumber;
 	int complaintId;
 	String description;
 	String complaintStatus;
@@ -17,10 +17,11 @@ public class Complaint {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getServiceNumber() {
+	
+	public long getServiceNumber() {
 		return serviceNumber;
 	}
-	public void setServiceNumber(int serviceNumber) {
+	public void setServiceNumber(long serviceNumber) {
 		this.serviceNumber = serviceNumber;
 	}
 	public int getComplaintId() {
@@ -43,8 +44,9 @@ public class Complaint {
 	}
 	@Override
 	public String toString() {
-		return "Complaint [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", complaintId="
-				+ complaintId + ", description=" + description + ", complaintStatus=" + complaintStatus + "]";
+		return "Complaint [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", complaintId=" + complaintId
+				+ ", description=" + description + ", complaintStatus=" + complaintStatus + "]";
 	}
+	
 	
 }

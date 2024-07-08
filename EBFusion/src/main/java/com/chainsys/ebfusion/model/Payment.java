@@ -14,6 +14,8 @@ public class Payment {
 	String paymentDate;
 	double totalAmount;
 	double payedAmount;
+	String payedStatus;
+	
 	public String getEmailId() {
 		return emailId;
 	}
@@ -69,12 +71,21 @@ public class Payment {
 	public void setPayedAmount(double payedAmount) {
 		this.payedAmount = payedAmount;
 	}
+	
+	public String getPayedStatus() {
+		return payedStatus;
+	}
+	public void setPayedStatus(String payedStatus) {
+		this.payedStatus = payedStatus;
+	}
 	@Override
 	public String toString() {
 		return "Payment [emailId=" + emailId + ", serviceNumber=" + serviceNumber + ", paymentId=" + paymentId
 				+ ", amount=" + amount + ", accountNumber=" + accountNumber + ", dueDate=" + dueDate + ", paymentDate="
-				+ paymentDate + ", totalAmount=" + totalAmount + ", payedAmount=" + payedAmount + "]";
+				+ paymentDate + ", totalAmount=" + totalAmount + ", payedAmount=" + payedAmount + ", payedStatus="
+				+ payedStatus + "]";
 	}
+	
 	
 	
 }
