@@ -40,8 +40,8 @@ public class CustomerController {
 		customer.setServiceNumber(serviceNumber);
 		customer.setConnectionStatus("applied");
 		userDAO.applyConnection(customer);
-        String email=(String)session.getAttribute("UserEmailId");
 		
+        String email=(String)session.getAttribute("UserEmailId");
 		List<Customer> list=userDAO.readApplyConnection(email);
 		model.addAttribute("list",list);		
 	        }

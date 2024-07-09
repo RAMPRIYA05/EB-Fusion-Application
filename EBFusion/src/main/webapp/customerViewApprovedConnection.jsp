@@ -178,6 +178,7 @@ margin-left:500px;
      <th scope="col">District</th>
     <th scope="col">State</th>
     <th scope="col">Address Proof</th>
+     <th scope="col">Complaint Form</th>
    
     </tr>
     </thead>
@@ -198,6 +199,14 @@ margin-left:500px;
         <td><%=obj.getState() %></td>
 	<td><img class="table-image" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(obj.getAddressProof()) %>" alt="Address Proof Image" "><br>
 			<a href="addressProof.jpg"><button>View</button></a>
+			</td>
+			
+			<td>
+			<form action="complaintForm.jsp">
+			 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
+             <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>">
+              <input type="submit" name="complaintForm" value="Complaint Form"> 
+		</form>
 			</td>
 			</tr>
 <%

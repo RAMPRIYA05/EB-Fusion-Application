@@ -27,7 +27,6 @@ body {
 	size: 30px;
 	height: 60px;
 	margin-left: 15px;
-	
 	margin-top: 15px;
 }
 
@@ -61,14 +60,13 @@ a {
 }
 
 .card {
-margin-left:65px !important;
+    margin-left:65px !important;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin: 20px;
     padding: 15px;
-    width: 300px;
-    
+    width: 300px;  
     display: inline-block;
     vertical-align: top;
 }
@@ -79,10 +77,7 @@ margin-left:65px !important;
     color: brown;
 }
 
-/* .card p {
-    color: #666;
-    margin-bottom: 15px;
-} */
+
 
 .card a {
     color: #3498db;
@@ -97,6 +92,42 @@ margin-left:65px !important;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.dropdown {
+   color: #3498db;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  
+}
+
+.dropdown-content {
+  display:none; 
+  text-align: center;
+  background-color:white;
+  min-width:60px;
+  font-size:13px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content a {
+  color:black;
+  text-decoration:none;
+  display:block;
+}
+
+.dropdown-content a:hover {
+  background-color:grey
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
 }
 
 </style>
@@ -116,11 +147,6 @@ margin-left:65px !important;
   <li><a href="logOut">LogOut</a></li>
 </nav>
                     
-                   <!-- <a style="margin-left:550px;" href="customerDetailsRegister.jsp">Add Customer Property Details</a><br>
-                   <a style="margin-left:550px;" href="/readCustomerProperty" method="get">Customer Property Details</a> -->
-                  
-
-
 <div class="card">
 <h3>Apply for new Connection</h3>
 <img src="newConnection.jpg" alt="Apply For New Connection Image">
@@ -128,13 +154,13 @@ margin-left:65px !important;
 </div>
 
 <div class="card">
-<h3>Applied Connection</h3>
+<h3>New Connection Request Pending</h3>
 <img src="applied.jpg" alt="Applied Connection Image">
 <a href="/readAppliedConnection" method="get">View</a>
 </div>
 
 <div class="card">
-<h3>Approved Connection Details</h3>
+<h3>Authorized Connection</h3>
 <img src="approved.jpg" alt="Approved Connection Image">
 <a href="/approvedConnection" method="get">View</a>
 </div>
@@ -148,7 +174,7 @@ margin-left:65px !important;
 <div class="card">
 <h3>Payment History</h3>
 <img src="payment.jpg" alt="View Payment History Image">
-<a href="/viewPayedStatus" method="get">View</a>
+<a href="/viewPaidStatus" method="get">View</a>
 </div>
 
 <div class="card">
@@ -156,6 +182,20 @@ margin-left:65px !important;
 <img src="paidBill.jpg" alt="View Paid Bill Image">
 <a href="/readPaidBill" method="get">View</a>
 </div>
+
+<div class="card">
+<h3>Complaint</h3>
+<img src="complaint.jpg" alt="Complaint Image">
+ <div class="dropdown">View
+                     <div class="dropdown-content">                      
+                        <a href="/viewPendingComplaint" method="get">Pending Complaint</a>
+                        <a href="/viewRectifiedComplaint" method="get">Rectified Complaint</a>
+                        
+                     </div>
+</div>
+</div>
+
+
 
 </body>
 </html>

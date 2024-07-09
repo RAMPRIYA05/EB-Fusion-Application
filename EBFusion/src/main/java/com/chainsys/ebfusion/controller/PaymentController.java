@@ -43,22 +43,22 @@ public class PaymentController {
 		 String email=(String)session.getAttribute("UserEmailId");
 		List<Payment> list=userDAO.checkPayment(email);
 		model.addAttribute("list", list);
-		return "viewPayedBill.jsp";
+		return "viewPaidBill.jsp";
 		}
-	 @GetMapping("/viewPayedStatus")
-		public String viewPayedStatus(Model model,HttpSession session)
+	 @GetMapping("/viewPaidStatus")
+		public String viewPaidStatus(Model model,HttpSession session)
 		{
 		    String email=(String)session.getAttribute("UserEmailId");
 			List<Payment> list=userDAO.checkPayment(email);
 			model.addAttribute("list", list);
-			return "viewPayedBill.jsp";
+			return "viewPaidBill.jsp";
 		}
-	 @GetMapping("/adminViewPayedStatus")
-		public String adminViewPayedStatus(Model model)
+	 @GetMapping("/adminViewPaidStatus")
+		public String adminViewPaidStatus(Model model)
 		{
 		    
 			List<Payment> list=userDAO.viewPayment();
 			model.addAttribute("list", list);
-			return "viewPayedBill.jsp";
+			return "customerPaidBills.jsp";
 		}
 }

@@ -15,14 +15,16 @@
             box-sizing: border-box;
             
         }
-        nav{
-        
-           background-color:brown;
-           opacity:0.8;
-           width:1250px;
-           /* color:blueviolet; */
-           padding:15px;
-        }
+       nav {
+	background-color: brown;
+	position: sticky;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	height: 110px;
+}
 
         .logo,ul,li,p{
             display: inline;
@@ -36,7 +38,7 @@
         
         ul{
             
-            margin-left:40%;
+            margin-left:20%;
             padding-left:5px;
           
         }
@@ -57,6 +59,8 @@
 .logo {
     size: 30px;
     height: 60px;
+    margin-left: 15px;
+	margin-top: 15px;
 }
 a{
     color:gold;
@@ -96,7 +100,7 @@ table th, table td {
 
 h2{
 margin-top:30px;
-margin-left:550px;
+text-align: center;
 }
 
 .dropdown {
@@ -139,7 +143,7 @@ margin-left:550px;
 
 .buttons-atag.active{
  
-    color:white;
+    color:gold;
     text-decoration:underline;
     
 }
@@ -158,14 +162,48 @@ margin-left:550px;
     <header>
             <nav>
                 <img class="logo" src="ebLogo.jpg" alt="Logo">
-               <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>
+               <p style="color:white;font-size:300%;font-weight: 100;padding-left:50px; font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
                     <li><a href="">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <li><a class="buttons-atag active" href="adminProfile" method="get">Profile</a>
-                
-                <li><a href="">LogOut</a></li>
+                   <li><a href="listOfUsers">Registered Customer</a></li>
+                 <li>
+					<div class="dropdown">
+						Bill
+						<div class="dropdown-content">
+							<a href="/adminViewPaidStatus" method="get">Paid Bill
+								</a> <a href="/readAllBill" method="get">UnPaid Bill
+								</a>
+
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="dropdown">
+						Connection
+						<div class="dropdown-content">
+
+							<a href="/readAllConnection" method="get">New Connection
+								Applied Customer</a> <a href="/allApprovedConnection" method="get">Approved
+								Customer Connection</a>
+
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="dropdown">
+						Complaint
+						<div class="dropdown-content">
+
+							<a href="adminViewComplaint" method="get">Pending Complaint</a> <a
+								href="rectifiedComplaint" method="get">Rectified Complaint</a>
+
+						</div>
+					</div>
+				</li>
+				<li> <a style="buttons-atag.active=color:gold;text-decoration:underline;" href="adminProfile">Profile</a></li>
+				<li><a style="margin-left: 200px;" href="logOut">LogOut</a></li>
                 </ul>
             </nav>
         </header> 

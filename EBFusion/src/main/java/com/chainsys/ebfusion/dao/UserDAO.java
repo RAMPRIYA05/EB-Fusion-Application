@@ -36,6 +36,12 @@ public interface UserDAO {
 	public List<Payment> checkPayment(String email);
 	public List<Payment> viewPayment();
 	void updatePaidStatus(Payment payment);
-	public void applyComplaint(Complaint complaint);
 	
+	public void applyComplaint(Complaint complaint);
+	public List<Complaint> viewComplaint(String email);
+	public List<Complaint> viewPendingComplaint();
+	public void updateComplaint(String complaintStatus, int complaintId);
+	List<Complaint> rectifiedComplaint(String email);
+	public List<Complaint> adminRectifiedComplaint();
+
 }

@@ -20,6 +20,8 @@ form {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 fieldset {
@@ -70,6 +72,34 @@ a:hover {
 
 </style>
 
+<script>
+	function validateForm() {
+
+		var address = document.getElementById("address");
+		var district = document.getElementById("district");
+		var state = document.getElementById("state");
+		var  addressProof= document.getElementById("addressProof");
+		if (!address.checkValidity()) {
+			alert("Address must be filled out");
+			return false;
+		}
+		if (!district.checkValidity()) {
+			alert("Choose District");
+			return false;
+		}
+		if (!state.checkValidity()) {
+			alert("Choose State");
+			return false;
+		}
+		if (!addressProof.checkValidity()) {
+			alert("Insert your Address Proof");
+			return false;
+		}
+		
+		
+		return true;
+	}
+</script>
 
 
 </head>
@@ -88,7 +118,7 @@ String emailId= (String)session.getAttribute("UserEmailId");
         <option value="Domestic">Domestic</option>
         <option value="Commercial">Commercial</option>
         </select><br>
-        <br>Address:<input type="text" placeholder="Enter your Address" name="address" required><br>
+        <br>Address:<input type="text" placeholder="Enter your Address" id="address" name="address" required><br>
         
        <br> District:
         <select id="district" name="district" required>
@@ -105,10 +135,9 @@ String emailId= (String)session.getAttribute("UserEmailId");
                 <option value="" disabled selected>Select your state</option>
                 <option value="Tamilnadu">TamilNadu</option>       
             </select><br>
-        <label>Add Images: <input type="file" id="addressProof" name="addressProof" required/></label><br><br>
-        
-        
-                <br><button type="submit">Submit</button>
+        <label>Address Proof: <input type="file" id="addressProof" name="addressProof" required/></label><br><br>
+              
+                <br><button type="submit" onclick="validateForm()">Submit</button>
         
     </fieldset>
 </form>

@@ -177,7 +177,7 @@ margin-left:500px;
                 </ul>
             </nav>
         </header> 
-<h2>Apply For new Connection</h2>
+<h2>New Connection Request</h2>
 
      <table border="1">
     <thead>

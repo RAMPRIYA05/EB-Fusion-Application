@@ -11,6 +11,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing:border-box;
 }
 
 body {
@@ -18,18 +19,25 @@ body {
     background-image: url(adminHomeImage.jpg);
     background-attachment: fixed;  
     background-size: cover;
+    width: auto;
+	min-height: 100vh;  
 } 
 
 .logo {
-    width: 50px; 
-    height: 60px;
+	size: 30px;
+	height: 60px;
+	margin-left: 15px;
+	margin-top: 15px;
 }
 
 nav {
-    background-color: brown;
-    opacity: 0.9;
-    width: 1250px;
-    padding: 25px;
+	background-color: brown;
+	position: sticky;
+	width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
 }
 
 nav .logo,
@@ -37,16 +45,16 @@ nav ul,
 nav li,
 nav p {
     display: inline;
-    vertical-align: middle;
+    
 }
 
 nav ul {
-    margin-left: 20%;
+    margin-left: 40%;
     padding-left: 5px;
 }
 
 nav li {
-    display: inline-block;
+   
     padding-left: 15px;
     cursor: pointer;
 }
@@ -57,27 +65,24 @@ nav a {
 }
 
 .card {
+    margin-left:65px !important;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin: 20px;
     padding: 15px;
     width: 300px;
-    
     display: inline-block;
     vertical-align: top;
 }
 
 .card h3 {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 10px;
     color: brown;
 }
 
-/* .card p {
-    color: #666;
-    margin-bottom: 15px;
-} */
+
 
 .card a {
     color: #3498db;
@@ -87,12 +92,47 @@ nav a {
 }
 
 .card img {
-    max-width: 100%;
-   
+    max-width: 100%;  
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.dropdown {
+   color: #3498db;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  
+}
+
+.dropdown-content {
+  display:none; 
+  text-align: center;
+  background-color:white;
+  min-width:60px;
+  font-size:13px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content a {
+  color:black;
+  text-decoration:none;
+  display:block;
+}
+
+.dropdown-content a:hover {
+  background-color:grey
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
 }
 </style>
 
@@ -111,7 +151,7 @@ nav a {
   <li><a href="listOfUsers">Registered Customer</a></li>
   
    <li> <a href="adminProfile">Profile</a></li>
-   <li><a href="logOut">LogOut</a></li>
+   <li><a style="margin-left: 200px;" href="logOut">LogOut</a></li>
   </ul>
 
 </nav>
@@ -141,8 +181,25 @@ nav a {
     <h3>Paid Bills</h3>
     <img src="paidBills.jpg" alt="PaidBills Image">
    <!--  <p>View bills that have been paid.</p> -->
-    <a href="/adminViewPayedStatus" method="get">View</a>
+    <a href="/adminViewPaidStatus" method="get">View</a>
 </div>
+
+
+
+
+<div class="card">
+<h3>Complaint</h3>
+<img src="complaint.jpg" alt="Complaint Image">
+ <div class="dropdown">View
+                     <div class="dropdown-content">                      
+                        <a href="/adminViewComplaint" method="get">Customers Pending Complaint</a>
+                        <a href="/rectifiedComplaint" method="get">Rectified Complaint</a>
+                        
+                     </div>
+</div>
+</div>
+
+
 
 </body>
 </html>

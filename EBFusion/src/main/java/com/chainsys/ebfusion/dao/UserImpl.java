@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.chainsys.ebfusion.mapper.BillMapper;
+import com.chainsys.ebfusion.mapper.ComplaintMapper;
 import com.chainsys.ebfusion.mapper.CustomerMapper;
 import com.chainsys.ebfusion.mapper.PaymentMapper;
 import com.chainsys.ebfusion.mapper.UserMapper;
@@ -24,6 +25,7 @@ public class UserImpl implements UserDAO{
 	CustomerMapper customerMapper;
 	BillMapper billMapper;
 	PaymentMapper paymentMapper;
+	ComplaintMapper complaintMapper;
 	
 	@Override
 	public void saveDetails(User user) {		
@@ -212,11 +214,52 @@ public class UserImpl implements UserDAO{
 
 	@Override
 	public void applyComplaint(Complaint complaint) {
-		String insert="insert into complaint(complaint_id,email_id,service_number,description,complaint_status)values(?,?,?,?,?)";
-		Object[] params= {complaint.getComplaintId(),complaint.getComplaintId(),complaint.getServiceNumber(),complaint.getDescription(),complaint.getDescription(),complaint.getComplaintStatus()};
+		String insert="insert into complaint_details(complaint_id,email_id,service_number,description,complaint_status)values(?,?,?,?,?)";
+		Object[] params= {complaint.getComplaintId(),complaint.getEmailId(),complaint.getServiceNumber(),complaint.getDescription(),complaint.getComplaintStatus()};
 		int rows=jdbcTemplate.update(insert,params);
 		
 	}
+
+	@Override
+	public List<Complaint> viewComplaint(String email) {
+		String read="Select complaint_id,email_id,service_number,description,complaint_status from complaint_details where email_id=? and (complaint_status='processed' || complaint_status='applied')";
+				List<Complaint> list=jdbcTemplate.query(read, new ComplaintMapper(),email);
+				return list;		
 	
+	}
+
+	@Override
+	public List<Complaint> viewPendingComplaint() {
+		
+		String read="Select complaint_id,email_id,service_number,description,complaint_status from complaint_details where (complaint_status='processed' || complaint_status='applied')";			 
+		List<Complaint> list=jdbcTemplate.query(read, new ComplaintMapper());
+		return list;	
+	}
+
+
+	@Override
+	public void updateComplaint(String complaintStatus, int complaintId) {		
+		String update="update complaint_details set complaint_status=? where complaint_id=?";
+		   Object[] params= {complaintStatus,complaintId};
+		   jdbcTemplate.update(update,params);
+		
+	}
+	
+	@Override
+	public List<Complaint> rectifiedComplaint(String email) {
+		String read="Select complaint_id,email_id,service_number,description,complaint_status from complaint_details where email_id=? and complaint_status='rectified'";
+				List<Complaint> list=jdbcTemplate.query(read, new ComplaintMapper(),email);
+				return list;		
+	
+	}
+
+	@Override
+	public List<Complaint> adminRectifiedComplaint() {
+	
+		String read="Select complaint_id,email_id,service_number,description,complaint_status from complaint_details where complaint_status='rectified'";
+		List<Complaint> list=jdbcTemplate.query(read, new ComplaintMapper());
+		return list;		
+	}
+
 	
 }

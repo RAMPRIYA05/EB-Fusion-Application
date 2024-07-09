@@ -126,7 +126,7 @@ h2 {
 					<th scope="col">Due Date</th>
 					<th scope="col">Service Type</th>
 					<th scope="col">Amount</th>
-					<th scope="col">Pay</th>
+					<th scope="col">Bill Status</th>
 					
 				</tr>
 			</thead>
