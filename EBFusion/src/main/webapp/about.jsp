@@ -56,7 +56,7 @@ a{
                <img class="logo" src="ebLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>
                <ul> 
-                    <!-- <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li> -->
+
                     <li><a  class="buttons-atag active" href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>   
                   <li><a href="">LogOut</a></li>

@@ -55,7 +55,7 @@ a {
 
 h4 {
 	margin-left: 450px;
-	padding: 20px;
+	padding: 10px;
 }
 
 table {
@@ -63,7 +63,7 @@ table {
 	border-collapse: collapse;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border: 1px solid #ddd;
-	margin-left: 60px;
+	margin-left: 100px;
 	margin-right: 30px;
 }
 
@@ -186,6 +186,12 @@ h2 {
             </nav>
         </header> 
 <h2>Customers applied for new Connection</h2>
+
+<form action="searchAppliedConnection" method="get"> 
+         
+         <h4>Search:<input type="search" placeholder="Enter your Search EmailId" name="emailId" id="emailId" required><br></h4>
+ </form>
+
 <form action="/customerConnection" method="get">
      <table border="1">
     <thead>
@@ -234,7 +240,7 @@ h2 {
 				</br>
 
 <td>
-<img class="table-image" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(obj.getAddressProof()) %>" alt="Address Proof Image" "><br>
+<img class="table-image" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(obj.getAddressProof()) %>" alt="Address Proof" "><br>
 <a href="addressProof.jpg"><button>View</button></a>
 </td>
 

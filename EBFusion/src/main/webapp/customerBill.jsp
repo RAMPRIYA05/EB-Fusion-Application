@@ -53,7 +53,7 @@ a{
 }
 
 h4{
-    margin-left:450px;
+    margin-left:490px;
     padding:20px;
 }
 
@@ -182,6 +182,11 @@ text-align: center;
       </header> 
 
 <h2>Customer Bill Details</h2>
+<form action="searchUnpaidBills" method="get"> 
+         
+         <h4>Search:<input type="search" placeholder="Enter your Search EmailId" name="emailId" id="emailId" required><br></h4>
+ </form>
+
 <form>
      <table border="1">
     <thead>

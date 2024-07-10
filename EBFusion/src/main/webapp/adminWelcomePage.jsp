@@ -23,46 +23,62 @@ body {
 	min-height: 100vh;  
 } 
 
+.navbar-nav {
+    background-color: peachpuff;
+    padding: 10px;
+}
+
 .logo {
-	size: 30px;
-	height: 60px;
-	margin-left: 15px;
-	margin-top: 15px;
+    max-width: 60px;
+    heigth:20px;
+    vertical-align: middle;
+}
+.navbar-nav p,img{
+          display:inline;
 }
 
-nav {
-	background-color: brown;
-	position: sticky;
-	width: 100%;
-    margin: 0;
+.navbar-nav p {
+    color: brown;
+    font-size: 40px;
+    font-weight: 100;
+    padding-left: 20px;
+    font-style: italic;
+    margin-left:100px;
+    vertical-align: middle;
+}
+
+.navbar {
+    background-color:brown;
+    color:white;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
     padding: 0;
-    top: 0;
-    left: 0;
+    margin: 0;
 }
 
-nav .logo,
-nav ul,
-nav li,
-nav p {
-    display: inline;
-    
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-nav ul {
-    margin-left: 40%;
-    padding-left: 5px;
-}
-
-nav li {
-   
-    padding-left: 15px;
-    cursor: pointer;
-}
-
-nav a {
-    color: gold;
+.navbar li a {
+    color: white;
     text-decoration: none;
+    padding: 10px 15px;
 }
+
+.navbar li a:hover {
+    background-color: #ddd;
+    color: #555;
+}
+
+.navbar li a[href="logOut"] {
+    margin-left:520px;
+}
+
 
 .card {
     margin-left:65px !important;
@@ -134,15 +150,19 @@ nav a {
 .dropdown:hover .dropbtn {
   background-color:white;
 }
+
 </style>
 
 
 </head>
 <body>
+<nav class="navbar-nav">
 
-<nav>
  <img class="logo" src="ebLogo.jpg" alt="Logo">
- <p style="color:white;font-size:300%;font-weight:100;padding-left:50px;font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>               
+ <p>EB FUSION EB SERVICES AND ITS PAYMENT</p>               
+</nav>
+
+ <nav class="navbar">
   <ul>
   <li><a href="#">Home</a></li>
   <li><a href="#">About Us</a></li>
@@ -151,36 +171,36 @@ nav a {
   <li><a href="listOfUsers">Registered Customer</a></li>
   
    <li> <a href="adminProfile">Profile</a></li>
-   <li><a style="margin-left: 200px;" href="logOut">LogOut</a></li>
+   <li><a href="logOut">LogOut</a></li>
   </ul>
 
 </nav>
  
 <div class="card">
     <h3>New Connection Applied Customer</h3>
-    <img src="applied.jpg" alt="New Connection Applied Customer Image">
-   <!--  <p>View the list of customers who have applied for a new connection.</p> -->
+    <img src="applied.jpg" alt="New Connection Applied Customer">
+
     <a href="readAllConnection" method="get">View</a>
 </div>
 
 <div class="card">
     <h3>Approved Customer Connection</h3>
-     <img src="approved.jpg" alt="Approved Customer Connection Image">
-   <!--  <p>See all customers whose connection requests have been approved.</p> -->
+     <img src="approved.jpg" alt="Approved Customer Connection">
+
     <a href="/allApprovedConnection" method="get">View</a>
 </div>
 
 <div class="card">
     <h3>UnPaid Bills</h3>
-    <img src="unpaidBills.jpg" alt="UnpaidBills Image">
-   <!--  <p>Check the list of bills that are unpaid.</p> -->
+    <img src="unpaidBills.jpg" alt="UnpaidBills">
+
     <a href="readAllBill" method="get">View</a>
 </div>
 
 <div class="card">
     <h3>Paid Bills</h3>
-    <img src="paidBills.jpg" alt="PaidBills Image">
-   <!--  <p>View bills that have been paid.</p> -->
+    <img src="paidBills.jpg" alt="PaidBills">
+
     <a href="/adminViewPaidStatus" method="get">View</a>
 </div>
 
@@ -189,7 +209,7 @@ nav a {
 
 <div class="card">
 <h3>Complaint</h3>
-<img src="complaint.jpg" alt="Complaint Image">
+<img src="complaint.jpg" alt="Complaint">
  <div class="dropdown">View
                      <div class="dropdown-content">                      
                         <a href="/adminViewComplaint" method="get">Customers Pending Complaint</a>

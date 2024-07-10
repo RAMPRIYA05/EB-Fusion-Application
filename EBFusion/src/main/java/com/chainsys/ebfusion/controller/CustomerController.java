@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.chainsys.ebfusion.dao.UserDAO;
 import com.chainsys.ebfusion.model.Customer;
+import com.chainsys.ebfusion.model.User;
+import com.chainsys.ebfusion.validation.Validation;
+
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -19,6 +23,8 @@ public class CustomerController {
 	@Autowired
     UserDAO userDAO;
 	JdbcTemplate jdbcTemplate;
+	@Autowired
+	Validation validate;
 	
 	@PostMapping("/applyConnection")
 	public String applyConnection(@RequestParam("emailId")String emailId,@RequestParam("serviceType")String serviceType,@RequestParam("address")String address,@RequestParam("district")String district,@RequestParam("state")String state,@RequestParam("addressProof") MultipartFile addressProof, Model model,HttpSession session) throws IOException
@@ -39,17 +45,20 @@ public class CustomerController {
 		long serviceNumber=random.nextLong(10000);
 		customer.setServiceNumber(serviceNumber);
 		customer.setConnectionStatus("applied");
-		userDAO.applyConnection(customer);
 		
+		
+		userDAO.applyConnection(customer);
+	
         String email=(String)session.getAttribute("UserEmailId");
 		List<Customer> list=userDAO.readApplyConnection(email);
-		model.addAttribute("list",list);		
+		model.addAttribute("list",list);	
+		  return "applyConnectionTable.jsp";
 	        }
 	        else
 	        {
 	            return "applyNewConnection.jsp";
 	        }
-		  return "applyConnectionTable.jsp";
+		
 	}
 	
 	@GetMapping("/readAppliedConnection")
@@ -96,4 +105,21 @@ public class CustomerController {
 		model.addAttribute("list",list);
 		return "approveConnection.jsp";					
 	}
+	
+	@GetMapping("/searchConnection")
+	public String searchConnection(@RequestParam("emailId")String emailId,Model model)
+	{		
+		List<Customer> list=userDAO.searchConnection(emailId);
+		model.addAttribute("list",list);
+		return "adminViewApprovedConnection.jsp";
+	}
+	
+	@GetMapping("/searchAppliedConnection")
+	public String searchAppliedConnection(@RequestParam("emailId")String emailId,Model model)
+	{		
+		List<Customer> list=userDAO.searchConnection(emailId);
+		model.addAttribute("list",list);
+		return "approveConnection.jsp";
+	}
+	
 }

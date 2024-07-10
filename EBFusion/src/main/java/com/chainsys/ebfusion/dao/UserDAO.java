@@ -43,5 +43,8 @@ public interface UserDAO {
 	public void updateComplaint(String complaintStatus, int complaintId);
 	List<Complaint> rectifiedComplaint(String email);
 	public List<Complaint> adminRectifiedComplaint();
+	
+	public List<Customer> searchConnection(String emailId);
+	public List<Bill> searchUnpaid(String emailId);
 
 }

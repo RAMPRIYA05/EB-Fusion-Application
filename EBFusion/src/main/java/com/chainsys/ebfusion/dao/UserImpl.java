@@ -3,7 +3,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import com.chainsys.ebfusion.mapper.BillMapper;
 import com.chainsys.ebfusion.mapper.ComplaintMapper;
@@ -31,7 +31,7 @@ public class UserImpl implements UserDAO{
 	public void saveDetails(User user) {		
 		String insert="insert into user(name,email_id,password,phone_number,aadhaar_number,user_type)values(?,?,?,?,?,?)";
 		 Object[] params= {user.getName(),user.getEmailId(),user.getPassword(),user.getPhoneNumber(),user.getAadhaarNumber(),user.getUserType()};
-  	   int rows=jdbcTemplate.update(insert,params);   	
+  	   jdbcTemplate.update(insert,params);   	
 	}
 	
 	@Override
@@ -100,7 +100,7 @@ public class UserImpl implements UserDAO{
 	public void applyConnection(Customer customer) {		
 		String insert="insert into customer_details(email_id,service_number,service_type,address,district,state,connection_status,address_proof)values(?,?,?,?,?,?,?,?)";
 		 Object[] params= {customer.getEmailId(),customer.getServiceNumber(),customer.getServiceType(),customer.getAddress(),customer.getDistrict(),customer.getState(),customer.getConnectionStatus(),customer.getAddressProof()};		
-		 int rows=jdbcTemplate.update(insert,params);   	
+		 jdbcTemplate.update(insert,params);   	
 	}
 	
 	@Override
@@ -143,14 +143,10 @@ public class UserImpl implements UserDAO{
 		
 		String insert="insert into bill(id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status)values(?,?,?,?,?,?,?,?,?,?)";
 		 Object[] params= {bill.getId(),bill.getEmailId(),bill.getServiceNumber(),bill.getAddress(),bill.getReadingUnits(),bill.getReadingTakenDate(),bill.getDueDate(),bill.getServiceType(),bill.getAmount(),bill.getBillStatus()};		
-		 int rows=jdbcTemplate.update(insert,params);   
+		 jdbcTemplate.update(insert,params);   
 	}
 	
-	/*
-	 * @Override public void removePaidBill(Bill bill) { String
-	 * delete="update bill set bill_status='Paid' where service_number=?"; Object[]
-	 * params= {bill.getServiceNumber()}; jdbcTemplate.update(delete,params); }
-	 */
+	
 	@Override
 	public List<Bill> viewBill() {
 		String read="Select id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status from bill";
@@ -178,7 +174,7 @@ public class UserImpl implements UserDAO{
 	public void payAmount(Payment payment) {
 		String insert="insert into payment(payment_id,email_id,service_number,amount,account_number,payment_date,total_amount,payed_amount,payed_status)values(?,?,?,?,?,?,?,?,?)";
 		 Object[] params= {payment.getPaymentId(),payment.getEmailId(),payment.getServiceNumber(),payment.getAmount(),payment.getAccountNumber(),payment.getPaymentDate(),payment.getTotalAmount(),payment.getPayedAmount(),payment.getPayedStatus()};		
-		 int rows=jdbcTemplate.update(insert,params);  
+		 jdbcTemplate.update(insert,params);  
 		
 	}
 	
@@ -191,7 +187,7 @@ public class UserImpl implements UserDAO{
 	Bill bill=new Bill();
 	String update="update bill set bill_status='Paid' where service_number=?";
 	Object[] param= {bill.getServiceNumber()};
-	jdbcTemplate.update(update,params);	
+	jdbcTemplate.update(update,param);	
 	
 	}
 
@@ -216,7 +212,7 @@ public class UserImpl implements UserDAO{
 	public void applyComplaint(Complaint complaint) {
 		String insert="insert into complaint_details(complaint_id,email_id,service_number,description,complaint_status)values(?,?,?,?,?)";
 		Object[] params= {complaint.getComplaintId(),complaint.getEmailId(),complaint.getServiceNumber(),complaint.getDescription(),complaint.getComplaintStatus()};
-		int rows=jdbcTemplate.update(insert,params);
+		jdbcTemplate.update(insert,params);
 		
 	}
 
@@ -259,6 +255,28 @@ public class UserImpl implements UserDAO{
 		String read="Select complaint_id,email_id,service_number,description,complaint_status from complaint_details where complaint_status='rectified'";
 		List<Complaint> list=jdbcTemplate.query(read, new ComplaintMapper());
 		return list;		
+	}
+
+	@Override
+	public List<Customer> searchConnection(String emailId) {
+		String retrive = String.format 
+                (
+                    "SELECT email_id,service_number,service_type,address,district,state,connection_status,address_proof FROM customer_details " +
+                    "WHERE (email_id LIKE '%%%s%%' OR service_number LIKE '%%%s%%' OR service_type LIKE '%%%s%%' OR address LIKE '%%%s%%' OR district LIKE '%%%s%%' OR state LIKE '%%%s%%') " ,
+                    emailId, emailId, emailId, emailId, emailId, emailId
+                );
+    return jdbcTemplate.query(retrive, new CustomerMapper());
+	}
+
+	@Override
+	public List<Bill> searchUnpaid(String emailId) {
+		String retrive = String.format 
+                (
+                    "SELECT id,email_id,service_number,address,reading_units,reading_taken_date,due_date,service_type,amount,bill_status FROM bill " +
+                    "WHERE (id LIKE '%%%s%%' OR email_id LIKE '%%%s%%' OR service_number LIKE '%%%s%%' OR address LIKE '%%%s%%' OR reading_units LIKE '%%%s%%' OR reading_taken_date LIKE '%%%s%%' OR due_date LIKE '%%%s%%' OR service_type LIKE '%%%s%%' OR amount LIKE '%%%s%%') " ,
+                    emailId, emailId, emailId, emailId, emailId, emailId, emailId, emailId, emailId
+                );
+    return jdbcTemplate.query(retrive, new BillMapper());
 	}
 
 	

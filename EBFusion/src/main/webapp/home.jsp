@@ -65,8 +65,8 @@ a {
                     <li>
                     
                        <a href="userRegistration.jsp">SignUp</a>
-                    <!-- </div>
-                 </div> -->
+
+                 
                     </li>
                 </ul>
                  

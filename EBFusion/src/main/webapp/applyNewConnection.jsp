@@ -112,7 +112,7 @@ String emailId= (String)session.getAttribute("UserEmailId");
         <h2>Customer Property Details</h2>
         
         <br>Email Id:<input type="email" placeholder="Enter your EmailId" value="<%=emailId %>" name="emailId" id="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[/.][a-z]{2,}$" readonly><br>
-       <!--  <br>Service Number:<input type="number" placeholder="Enter your ServiceNumber" name="serviceNumber" id="serviceNumber" pattern="[0-9]{12}" required><br> -->
+
         <br> Service Type:
         <select id="serviceType" name="serviceType" required>
         <option value="Domestic">Domestic</option>

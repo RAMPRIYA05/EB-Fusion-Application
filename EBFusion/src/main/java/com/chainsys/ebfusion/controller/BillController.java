@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.ebfusion.dao.UserDAO;
 import com.chainsys.ebfusion.model.Bill;
-import com.chainsys.ebfusion.model.Customer;
+import com.chainsys.ebfusion.model.User;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -69,4 +69,13 @@ public class BillController {
 		model.addAttribute("list",list);
 		return "paidBill.jsp";
 	}
+	
+	@GetMapping("/searchUnpaidBills")
+	public String searchUnpaidBills(@RequestParam("emailId")String emailId,Model model)
+	{		
+		List<Bill> list=userDAO.searchUnpaid(emailId);
+		model.addAttribute("list",list);
+		return "customerBill.jsp";
+	}
+	
 }

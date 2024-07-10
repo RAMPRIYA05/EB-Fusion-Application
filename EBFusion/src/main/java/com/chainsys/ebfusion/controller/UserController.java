@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.ebfusion.dao.UserDAO;
-import com.chainsys.ebfusion.model.Customer;
+
 import com.chainsys.ebfusion.model.User;
 import com.chainsys.ebfusion.validation.Validation;
 
@@ -67,6 +67,7 @@ public class UserController {
                 if(password.equals(userDAO.getPassword(emailId)))
                 {                    
                 	session.setAttribute("AdminEmailId", emailId);
+                	
                     return "adminWelcomePage.jsp";
                 }
                 else
@@ -129,8 +130,7 @@ public class UserController {
 	@GetMapping("/updateAdmin")
 	public String updateAdmin(@RequestParam("name")String name,@RequestParam("phoneNumber")long phoneNumber,@RequestParam("aadhaarNumber")long aadhaarNumber,@RequestParam("emailId")String emailId,Model model) {
 		User user=new User();
-		user.setName(name);		
-		//user.setPassword(password);
+		user.setName(name);	
 		user.setPhoneNumber(phoneNumber);
 		user.setAadhaarNumber(aadhaarNumber);
 		user.setEmailId(emailId);
@@ -165,7 +165,7 @@ public class UserController {
 	public String updateUser(@RequestParam("name")String name,@RequestParam("phoneNumber")long phoneNumber,@RequestParam("aadhaarNumber")long aadhaarNumber,@RequestParam("emailId")String emailId,Model model) {
 		User user=new User();
 		user.setName(name);		
-		//user.setPassword(password);
+		
 		user.setPhoneNumber(phoneNumber);
 		user.setAadhaarNumber(aadhaarNumber);
 		user.setEmailId(emailId);

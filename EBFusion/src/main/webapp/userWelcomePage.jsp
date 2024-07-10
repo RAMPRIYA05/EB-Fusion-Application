@@ -23,41 +23,63 @@ body {
     
 }
 
+.navbar-nav {
+    background-color: peachpuff;
+    padding: 10px;
+}
+
 .logo {
-	size: 30px;
-	height: 60px;
-	margin-left: 15px;
-	margin-top: 15px;
+    max-width: 60px;
+    heigth:20px;
+    vertical-align: middle;
+}
+.navbar-nav p,img{
+          display:inline;
 }
 
-nav {
-	background-color: brown;
-	position: sticky;
-	width: 100%;
-    margin: 0;
+.navbar-nav p {
+    color: brown;
+    font-size: 40px;
+    font-weight: 100;
+    padding-left: 20px;
+    font-style: italic;
+    margin-left:100px;
+    vertical-align: middle;
+}
+
+.navbar {
+    background-color:brown;
+    color:white;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
     padding: 0;
-    top: 0;
-    left: 0;
+    margin: 0;
 }
 
-.logo, ul, li, p {
-	display: inline;
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-li {
-	padding-left: 15px;
-	cursor: pointer;
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
 }
 
-ul {
-	margin-left: 40%;
-	padding-left: 5px;
+.navbar li a:hover {
+    background-color: #ddd;
+    color: #555;
 }
 
-a {
-	color: gold;
-	text-decoration: none;
+.navbar li a[href="logOut"] {
+    margin-left:700px;
 }
+
+
 
 .card {
     margin-left:65px !important;
@@ -130,62 +152,65 @@ a {
   background-color:white;
 }
 
+
 </style>
 
 </head>
 <body>
 
-<nav>
-
- <img class="logo" src="ebLogo.jpg" alt="Logo">
- <p style="color:white;font-size:300%;font-weight:100;margin-left:50px;font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>
-   <ul>
-  <li><a href="">Home</a><li>
-  <li><a href="">About Us</a></li>
-  <li><a href="">Contact Us</a></li>
-  <li><a href="userProfile" method="get">Profile</a></li>      
-  <li><a href="logOut">LogOut</a></li>
-</nav>
+ <nav class="navbar-nav">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
+               <p>EB FUSION EB SERVICES AND ITS PAYMENT</p>
+               </nav>
+               <nav class="navbar">
+                <ul> 
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+				<li> <a href="userProfile">Profile</a></li>
+				<li><a href="logOut">LogOut</a></li>
+                </ul>
+            </nav>
                     
 <div class="card">
 <h3>Apply for new Connection</h3>
-<img src="newConnection.jpg" alt="Apply For New Connection Image">
+<img src="newConnection.jpg" alt="Apply For New Connection">
 <a href="applyNewConnection.jsp">Apply</a>
 </div>
 
 <div class="card">
 <h3>New Connection Request Pending</h3>
-<img src="applied.jpg" alt="Applied Connection Image">
+<img src="applied.jpg" alt="Applied Connection">
 <a href="/readAppliedConnection" method="get">View</a>
 </div>
 
 <div class="card">
 <h3>Authorized Connection</h3>
-<img src="approved.jpg" alt="Approved Connection Image">
+<img src="approved.jpg" alt="Approved Connection">
 <a href="/approvedConnection" method="get">View</a>
 </div>
 
 <div class="card">
 <h3>Bill</h3>
-<img src="viewBill.png" alt="View Bill Image">
+<img src="viewBill.png" alt="View Bill">
 <a href="/readParticularBill" method="get">View</a>
 </div>
 
 <div class="card">
 <h3>Payment History</h3>
-<img src="payment.jpg" alt="View Payment History Image">
+<img src="payment.jpg" alt="View Payment History ">
 <a href="/viewPaidStatus" method="get">View</a>
 </div>
 
 <div class="card">
 <h3>Paid Bill</h3>
-<img src="paidBill.jpg" alt="View Paid Bill Image">
+<img src="paidBill.jpg" alt="View Paid Bill ">
 <a href="/readPaidBill" method="get">View</a>
 </div>
 
 <div class="card">
 <h3>Complaint</h3>
-<img src="complaint.jpg" alt="Complaint Image">
+<img src="complaint.jpg" alt="Complaint">
  <div class="dropdown">View
                      <div class="dropdown-content">                      
                         <a href="/viewPendingComplaint" method="get">Pending Complaint</a>

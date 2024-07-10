@@ -17,42 +17,105 @@
 	box-sizing: border-box;
 }
 
-nav {
-	background-color: brown;
-	opacity: 0.8;
-	width: 1250px;
-	/* color:blueviolet; */
-	padding: 15px;
-}
-
-.logo, ul, li, p {
-	display: inline;
-}
-
-li {
-	padding-left: 15px;
-	cursor: pointer;
-}
-
-ul {
-	margin-left: 20%;
-	padding-left: 5px;
+.navbar-nav {
+    background-color: peachpuff;
+    padding: 10px;
 }
 
 .logo {
-	size: 30px;
-	height: 60px;
+    max-width: 60px;
+    heigth:20px;
+    
+    vertical-align: middle;
+}
+.navbar-nav p,img{
+          display:inline;
+          
 }
 
-a {
-	color: gold;
-	text-decoration: none;
+.navbar-nav p {
+    color: brown;
+    font-size:40px;
+   
+    font-weight: 100;
+    padding-left: 20px;
+    font-style: italic;
+    margin-left:100px;
+    vertical-align: middle;
 }
 
-h4 {
-	margin-left: 450px;
-	padding: 20px;
+.navbar {
+    background-color:brown;
+    color:white;
+    padding: 10px;
 }
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar li a[href="logOut"] {
+    margin-left:520px;
+}
+
+
+    
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    color: white;
+   
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: brown;
+    min-width: 160px;
+    font-size: 14px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; 
+    color: black; 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
+}
+    
+
 
 table {
 	background-color: peachpuff;
@@ -98,18 +161,54 @@ h2 {
 
 
 	<header>
-		<nav>
-			<img class="logo" src="ebLogo.jpg" alt="Logo">
-			<p
-				style="color: white; font-size: 300%; font-weight: 100; padding-left: 100px; font-style: italic;">RP
-				EB SERVICES AND ITS PAYMENT</p>
-			<ul>
-				<li><a href="">Home</a></li>
-				<li><a href="">About Us</a></li>
-				<li><a href="">Contact Us</a></li>
-				<li><a href="">LogOut</a></li>
-			</ul>
-		</nav>
+		 <nav class="navbar-nav">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
+               <p>EB FUSION EB SERVICES AND ITS PAYMENT</p>
+               </nav>
+               <nav class="navbar">
+                <ul> 
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                   
+                 <li>
+					<div class="dropdown">
+						<a style="buttons-atag.active=color:white;text-decoration:underline;">Bill</a>
+						<div class="dropdown-content">
+							<a href="/readPaidBill" method="get">Paid Bill
+								</a> <a href="/readParticularBill" method="get">UnPaid Bill
+								</a>
+
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="dropdown">
+						<a>Connection</a>
+						<div class="dropdown-content">
+
+							<a href="applyNewConnection.jsp">Apply For New Connection
+								</a> <a href="/readAppliedConnection" method="get">New Connection Request Pending</a>
+                              <a href="/approvedConnection" method="get">Authorized Connection</a>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="dropdown">
+						<a>Complaint</a>
+						<div class="dropdown-content">
+
+							<a href="/viewPendingComplaint" method="get">Pending Complaint</a> <a
+								href="/viewRectifiedComplaint" method="get">Rectified Complaint</a>
+
+						</div>
+					</div>
+				</li>
+				<li><a href="/viewPaidStatus" method="get">Payment History</a></li>
+				<li> <a href="userProfile">Profile</a></li>
+				<li><a style="margin-left: 100px;" href="logOut">LogOut</a></li>
+                </ul>
+            </nav>
 	</header>
 	<form>
 		<h2 style="margin-left: 450px;">Customer Bill Details</h2>

@@ -43,77 +43,57 @@
     </style>
 
     <script>
-        function calculateAmount() {
-            var readingUnits = parseFloat(document.getElementById("readingUnits").value);
-            var serviceType = document.getElementById("serviceType").value;
-            var ratePerUnit;
-            var amount;
+    function calculateAmount() {
+        var readingUnits = parseFloat(document.getElementById("readingUnits").value);
+        var serviceType = document.getElementById("serviceType").value;
+        var ratePerUnit;
+        var amount = 0;
 
-            if (serviceType === "domestic") {
-                if (readingUnits <= 100) {
-                    ratePerUnit = 0;
-                    amount=0;
-                } else if (readingUnits > 100 && readingUnits <= 200) {
-                	 ratePerUnit = 1.00;
-                	amount=((readingUnits-100)*1)+(100*0);
-                } else if (readingUnits > 200 && readingUnits <= 300) {
-                	 ratePerUnit = 2.00;
-                	amount=((readingUnits-200)*2)+(100*0)+(100*1);  
-                } else if (readingUnits > 300 && readingUnits <= 500) {
-                	 ratePerUnit = 3.00;
-                	amount=((readingUnits-300)*3)+(100*0)+(100*1)+(100*2);
-                } else if (readingUnits <= 1000) {
-                	 ratePerUnit = 4.00;
-                	amount=((readingUnits-500)*4)+(100*0)+(100*1)+(100*2)+(200*3);
-                } else {
-                    ratePerUnit = 5.00;
-                    amount=((readingUnits-1000)*5)+(100*0)+(100*1)+(100*2)+(200*3)+(500*4);
-                }
-            } else if (serviceType === "commercial") {
-                if (readingUnits <= 100) {
-                    ratePerUnit = 0; 
-                } else if (readingUnits > 100 && readingUnits <= 200) {
-                	 ratePerUnit = 2.00; 
-                	amount=((readingUnits-100)*2)+(100*0);
-                } else if (readingUnits > 200 && readingUnits <= 300) {
-                	 ratePerUnit = 3.00; 
-                	amount=((readingUnits-200)*3)+(100*0)+(100*2);
-                } else if (readingUnits > 300 && readingUnits <= 500) {
-                	 ratePerUnit = 4.00; 
-                	amount=((readingUnits-300)*4)+(100*0)+(100*2)+(100*3);
-                } else if (readingUnits <= 1000) {
-                	 ratePerUnit = 5.00; 
-                	amount=((readingUnits-500)*5)+(100*0)+(100*2)+(100*3)+(200*4);
-                } else {
-                    ratePerUnit = 7.00; 
-                    amount=((readingUnits-1000)*7)+(100*0)+(100*2)+(100*3)+(200*4)+(500*5);
-                }
+        if (serviceType === "Domestic") {
+            if (readingUnits <= 100) {
+                ratePerUnit = 0;
+                amount = 0;
+            } else if (readingUnits <= 200) {
+                ratePerUnit = 1.00;
+                amount = ((readingUnits - 100) * ratePerUnit);
+            } else if (readingUnits <= 300) {
+                ratePerUnit = 2.00;
+                amount = ((readingUnits - 200) * ratePerUnit) + (100 * 1);
+            } else if (readingUnits <= 500) {
+                ratePerUnit = 3.00;
+                amount = ((readingUnits - 300) * ratePerUnit) + (100 * 2) + (100 * 1);
+            } else if (readingUnits <= 1000) {
+                ratePerUnit = 4.00;
+                amount = ((readingUnits - 500) * ratePerUnit) + (200 * 3) + (100 * 2) + (100 * 1);
+            } else {
+                ratePerUnit = 5.00;
+                amount = ((readingUnits - 1000) * ratePerUnit) + (500 * 4) + (200 * 3) + (100 * 2) + (100 * 1);
             }
-            document.getElementById("amount").value = amount.toFixed(2);
+        } else if (serviceType === "Commercial") {
+            if (readingUnits <= 100) {
+                ratePerUnit = 0;
+                amount = 0;
+            } else if (readingUnits <= 200) {
+                ratePerUnit = 2.00;
+                amount = ((readingUnits - 100) * ratePerUnit);
+            } else if (readingUnits <= 300) {
+                ratePerUnit = 3.00;
+                amount = ((readingUnits - 200) * ratePerUnit) + (100 * 2);
+            } else if (readingUnits <= 500) {
+                ratePerUnit = 4.00;
+                amount = ((readingUnits - 300) * ratePerUnit) + (100 * 2) + (100 * 3);
+            } else if (readingUnits <= 1000) {
+                ratePerUnit = 5.00;
+                amount = ((readingUnits - 500) * ratePerUnit) + (200 * 4) + (100 * 3) + (100 * 2);
+            } else {
+                ratePerUnit = 7.00;
+                amount = ((readingUnits - 1000) * ratePerUnit) + (500 * 5) + (200 * 4) + (100 * 3) + (100 * 2);
+            }
         }
 
-        function validateForm() {
-        	var readingUnits = document.getElementById("readingUnits").value;
-            var readingTakenDate = document.getElementById("readingTakenDate").value;
-            var readingDueDate = document.getElementById("readingDueDate").value;
+        document.getElementById("amount").value = amount.toFixed(2); 
+    }
 
-            if (readingUnits.trim() === "") {
-                alert("Please enter Reading Units.");
-                return false;
-            }
-
-            if (readingTakenDate.trim() === "") {
-                alert("Reading Taken Date must be filled out");
-                return false;
-            }
-
-            if (dueDate.trim() === "") {
-                alert("Reading Due Date must be filled out");
-                return false;
-            }
-
-            return true;
-        }
     </script>
 </head>
 <body>
@@ -131,7 +111,7 @@
     <input type="number" id="serviceNumber" name="serviceNumber" value="<%=request.getParameter("serviceNumber") %>" readonly><br><br>
 
     Reading Units:
-    <input type="number" id="readingUnits" name="readingUnits" onkeyup="calculateAmount()" required><br><br>
+    <input type="number" id="readingUnits" name="readingUnits" oninput="calculateAmount()" required><br><br>
 
     Reading Taken Date:
     <input type="date" id="readingTakenDate" name="readingTakenDate" required><br><br>
@@ -140,12 +120,17 @@
     <input type="date" id="dueDate" name="dueDate" required><br><br>
 
     Service Type:
-    <input style=" width: 95%;padding: 8px;margin: 5px;box-sizing: border-box;"  id="serviceType" name="serviceType" value="<%= request.getParameter("serviceType") %>"  readonly><br><br>
+    
+ 
+<select style=" width: 95%;padding: 8px;margin: 5px;box-sizing: border-box;"  id="serviceType" name="serviceType" readonly>
+    <option value="Domestic">Domestic</option>
+    <option value="Commercial">Commercial</option>
+</select>
      
     Amount:
     <input type="number" id="amount" name="amount" readonly><br><br>
 
-    <input type="submit" onsubmit="return validateForm()" value="Submit">
+    <input type="submit" onclick="return validateForm()" value="Submit">
 </form>
 
 

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.ebfusion.dao.UserDAO;
 import com.chainsys.ebfusion.model.Complaint;
-import com.chainsys.ebfusion.model.User;
-
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -57,7 +55,7 @@ public class ComplaintController {
 	
 	@GetMapping("/updateComplaint")
 	public String updateComplaint(@RequestParam("complaintStatus")String complaintStatus,@RequestParam("complaintId") int complaintId,Model model) {
-		Complaint complaint=new Complaint();
+		
 		
 		userDAO.updateComplaint(complaintStatus, complaintId);
 		List<Complaint> list=userDAO.viewPendingComplaint();
