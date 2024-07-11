@@ -10,155 +10,143 @@
 <title>Insert title here</title>
 
 <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing: border-box;
-            
-        }
-      
-      .navbar-nav {
-    background-color: peachpuff;
-    padding: 10px;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.navbar-nav {
+	background-color: peachpuff;
+	padding: 10px;
 }
 
 .logo {
-    max-width: 60px;
-    heigth:20px;
-    
-    vertical-align: middle;
+	max-width: 60px;
+	heigth: 20px;
+	vertical-align: middle;
 }
-.navbar-nav p,img{
-          display:inline;
-          
+
+.navbar-nav p, img {
+	display: inline;
 }
 
 .navbar-nav p {
-    color: brown;
-    font-size:40px;
-   
-    font-weight: 100;
-    padding-left: 20px;
-    font-style: italic;
-    margin-left:100px;
-    vertical-align: middle;
+	color: brown;
+	font-size: 40px;
+	font-weight: 100;
+	padding-left: 20px;
+	font-style: italic;
+	margin-left: 100px;
+	vertical-align: middle;
 }
 
 .navbar {
-    background-color:brown;
-    color:white;
-    padding: 10px;
+	background-color: brown;
+	color: white;
+	padding: 10px;
 }
 
 .navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 .navbar li {
-    display: inline-block;
-    margin-right: 10px;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 .navbar li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+	padding: 10px 20px;
 }
 
 .navbar li a:hover {
-    background-color: #ddd;
-    color: black;
+	background-color: #ddd;
+	color: black;
 }
 
 .navbar li a[href="logOut"] {
-    margin-left:520px;
+	margin-left: 520px;
 }
 
-
-    
-    .dropdown {
-    position: relative;
-    display: inline-block;
-    color: white;
-   
+.dropdown {
+	position: relative;
+	display: inline-block;
+	color: white;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: brown;
-    min-width: 160px;
-    font-size: 14px; 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: brown;
+	min-width: 160px;
+	font-size: 14px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    text-decoration: none;
-    display: block;
-    
+	color: black;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1; 
-    color: black; 
+	background-color: #f1f1f1;
+	color: black;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+	display: block;
 }
 
 .dropdown:hover .dropbtn {
-  background-color:white;
+	background-color: white;
 }
-    
 
-      
-
-table{
-	background-color:peachpuff;
+table {
+	background-color: peachpuff;
 	border-collapse: collapse;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border: 1px solid #ddd;
-	margin-left:130px;
-	margin-right:10px;
+	margin-left: 130px;
+	margin-right: 10px;
 }
 
 table thead {
-        background-color: brown;
-        color: white;
-        
-    }
+	background-color: brown;
+	color: white;
+}
+
 table th, table td {
-        padding: 7px;
-        text-align: center;
-        border: 1px solid #ddd;
-    }
-     table tr:nth-child(even) {
-        background-color:white;
-    
-    }
-      .table-image {
-    max-width: 100px; 
-    max-height: 100px; 
+	padding: 7px;
+	text-align: center;
+	border: 1px solid #ddd;
 }
 
-h2{
-margin-top:30px;
-margin-left:500px;
+table tr:nth-child(even) {
+	background-color: white;
 }
 
-
-.buttons-atag.active{
-
-    color:white;
-    text-decoration:underline;    
+.table-image {
+	max-width: 100px;
+	max-height: 100px;
 }
 
- </style>
+h2 {
+	margin-top: 30px;
+	margin-left: 500px;
+}
+
+.buttons-atag.active {
+	color: white;
+	text-decoration: underline;
+}
+</style>
     
 
 
@@ -229,8 +217,8 @@ margin-left:500px;
         <th>Account Number</th>
         <th>Payment Date</th>
         <th>Total Amount</th>
-        <th>Payed Amount</th>
-        
+        <th>Paid Amount</th>
+        <th>Print Receipt</th>
         
         </tr>
     </thead>
@@ -250,13 +238,16 @@ for(Payment obj:list)
         <td><%=obj.getPayedAmount() %></td>
       
        
+       
         
-        
+         
 </tr>
 <%
 }
 %>
 </table>
+
+
         
 </body>
 </html>
