@@ -9,7 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
 * {
 	margin: 0;
@@ -232,7 +232,8 @@ h2 {
 			</thead>
 
 			<% List<Bill> list = (ArrayList<Bill>) request.getAttribute("list");
-    for (Bill obj : list) { %>
+			if (list != null && !list.isEmpty()) {
+			for (Bill obj : list) { %>
 			<tr>
 
 				<td><%= obj.getEmailId() %></td>
@@ -246,10 +247,17 @@ h2 {
               <td><%=obj.getBillStatus() %></td>
 				<td><a style="color: blue;"
 					href="paymentForm.jsp?emailId=<%=obj.getEmailId()%>&serviceNumber=<%=obj.getServiceNumber()%>&readingTakenDate=<%=obj.getReadingTakenDate()%>&amount=<%=obj.getAmount()%>&dueDate=<%=obj.getDueDate()%>">pay</a></td>
-
-
-
 			</tr>
+			
+			<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+			
+			
 			<% 
     } 
     %>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
 * {
 	margin: 0;
@@ -75,10 +75,10 @@ body {
     color: #555;
 }
 
-.navbar li a[href="logOut"] {
+/* .navbar li a[href="logOut"] {
     margin-left:700px;
 }
-
+ */
 
 
 .card {
@@ -153,6 +153,46 @@ body {
 }
 
 
+.profile{
+    max-width: 40px;
+    heigth:1px;
+    vertical-align: middle;
+}
+
+  .dropdown-profile {
+    position: relative;
+    display: inline-block;
+    color: white;
+   
+}
+
+.dropdown-profilecontent {
+    display: none;
+    position: absolute;
+    background-color: brown;
+    min-width: 160px;
+    font-size: 14px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-profilecontent a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown-profilecontent a:hover {
+    background-color: #f1f1f1; 
+    color: black; 
+}
+
+.dropdown-profile:hover .dropdown-profilecontent {
+    display: block;
+}
+
+
 </style>
 
 </head>
@@ -167,8 +207,24 @@ body {
                     <li><a href="">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-				<li> <a href="userProfile">Profile</a></li>
-				<li><a href="logOut">LogOut</a></li>
+                    
+                    
+                    
+                    <li>
+					<div class="dropdown-profile">
+						 <img class="profile" src="profile.png" alt="Profile">
+						<div class="dropdown-profilecontent">
+							<a href="userProfile">Profile
+								</a> <a href="logOut">LogOut
+								</a>
+
+						</div>
+					</div>
+				</li>
+                    
+                    
+				<!-- <li> <a href="userProfile">Profile</a></li>
+				<li><a href="logOut">LogOut</a></li> -->
                 </ul>
             </nav>
                     

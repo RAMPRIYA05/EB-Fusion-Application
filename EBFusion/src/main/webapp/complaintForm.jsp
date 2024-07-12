@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
 form {
 	background-color: peachpuff;

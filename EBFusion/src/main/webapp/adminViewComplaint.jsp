@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
 * {
 	margin: 0;
@@ -230,7 +231,8 @@ h4 {
 			</tr>
 		</thead>
 		<%List<Complaint> list=(ArrayList<Complaint>)request.getAttribute("list");
-for(Complaint obj:list)
+		if (list != null && !list.isEmpty()) {
+		for(Complaint obj:list)
 {
 %>
 		<tr>
@@ -250,7 +252,16 @@ for(Complaint obj:list)
 			</a></td>
 
 		</tr>
+		
 		<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+		
+<%
 }
 %>
 	</table>

@@ -7,7 +7,8 @@
 <html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin Profile</title>
+<link rel="icon" style="heigth:50px;width:50px;" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -251,6 +252,8 @@ text-align: center;
     </thead>
     
 <%List<User> list=(ArrayList<User>)request.getAttribute("list");
+if (list != null && !list.isEmpty()) {
+
 for(User obj:list)
 {
 %>
@@ -279,10 +282,16 @@ for(User obj:list)
 					<button>Delete</button>
 				</form>
 			</td>      
-
-
-
 </tr>
+
+<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+
 <%
 }
 %>

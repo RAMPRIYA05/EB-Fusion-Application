@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -225,6 +226,7 @@ margin-left:500px;
     </tr>
     </thead>
 <%List<Complaint> list=(ArrayList<Complaint>)request.getAttribute("list");
+if (list != null && !list.isEmpty()) {
 for(Complaint obj:list)
 {
 %>
@@ -234,9 +236,17 @@ for(Complaint obj:list)
         <td><%=obj.getServiceNumber() %></td>
       
         <td><%=obj.getDescription() %></td>
-        <td><%=obj.getComplaintStatus() %></td>
-       
+        <td><%=obj.getComplaintStatus() %></td>    
 </tr>
+
+<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+
 <%
 }
 %>

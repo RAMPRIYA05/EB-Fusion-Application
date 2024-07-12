@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,14 +39,19 @@ public class UserController {
 	public String saveDetails(@RequestParam("name")String name,@RequestParam("emailId")String emailId,@RequestParam("password")String password,@RequestParam("phoneNumber")long phoneNumber,@RequestParam("aadhaarNumber")long aadhaarNumber,Model model)
 	{
 		
+		BCryptPasswordEncoder bcrypt=new BCryptPasswordEncoder();
+        String encryptedPassword=bcrypt.encode(password);
+        
+		
 		User user=new User();
 		Validation validate = new Validation();
 		    user.setName(name);
 			user.setEmailId(emailId);
-			user.setPassword(password);
+			user.setPassword(encryptedPassword);
 			user.setPhoneNumber(phoneNumber);	
 			user.setAadhaarNumber(aadhaarNumber);	
 			user.setUserType("User");
+			
 		if(Boolean.FALSE.equals(validate.nameValidation(name, model)) || Boolean.FALSE.equals(validate.emailIdValidation(emailId, model)) || Boolean.FALSE.equals(validate.passwordValidation(password, model)) || Boolean.FALSE.equals(validate.phoneNumberValidation(phoneNumber, model)) || Boolean.FALSE.equals(validate.aadhaarNumberValidation(aadhaarNumber, model))){   
 		userDAO.saveDetails(user);
 		return "logIn.jsp";
@@ -60,6 +66,7 @@ public class UserController {
     public String login(@RequestParam("emailId") String emailId, @RequestParam("password") String password,HttpSession session)
     {
 	
+		
         try
         {
             if(emailId.equals("ram5@eb.com"))

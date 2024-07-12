@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -238,6 +239,7 @@ h4 {
     </thead>
 
     <% List<Bill> list = (ArrayList<Bill>) request.getAttribute("list");
+    if (list != null && !list.isEmpty()) {
     for (Bill obj : list) { %>
     <tr>
        <td><%=obj.getId() %></td>
@@ -252,6 +254,16 @@ h4 {
         <td><%=obj.getBillStatus() %></td>
 
         </tr>
+        
+        <%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+        
+        
     <% 
     } 
     %>

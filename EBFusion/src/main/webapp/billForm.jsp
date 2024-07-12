@@ -5,7 +5,7 @@
 <html lang="xml:land">
 <head>
     <title>Electricity Bill Form</title>
-    
+    <link rel="icon" type="image/x-icon" href="ebLogo.jpg">
     <style>
         form {
             background-color: peachpuff;

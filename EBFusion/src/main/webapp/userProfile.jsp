@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -287,7 +288,7 @@ for(User obj:list)
 		} else {
 		%>
 		<tr>
-			<td colspan="15">No users found.</td>
+			<td colspan="15">No records found.</td>
 		</tr>
 
 <%

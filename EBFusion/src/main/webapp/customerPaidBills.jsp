@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -237,6 +237,7 @@ h4 {
     </thead>
 
 <%List<Payment> list=(ArrayList<Payment>)request.getAttribute("list");
+if (list != null && !list.isEmpty()) {
 for(Payment obj:list)
 {
 %>
@@ -248,12 +249,17 @@ for(Payment obj:list)
         <td><%=obj.getAccountNumber() %></td>
         <td><%=obj.getPaymentDate() %>
         <td><%=obj.getTotalAmount() %>
-        <td><%=obj.getPayedAmount() %></td>
-      
-       
-        
-        
+        <td><%=obj.getPayedAmount() %></td>   
 </tr>
+
+<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+
 <%
 }
 %>

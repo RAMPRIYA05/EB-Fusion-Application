@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="ebLogo.jpg">
 <style>
         *{
             margin:0;
@@ -240,7 +241,8 @@ margin-left:500px;
     
 <%
     List<Customer> list=(ArrayList<Customer>)request.getAttribute("list");
-    for(Customer obj:list)
+if (list != null && !list.isEmpty()) {    
+for(Customer obj:list)
     {
     %>
 <tr>
@@ -264,6 +266,16 @@ margin-left:500px;
 		</form>
 			</td>
 			</tr>
+			
+			<%
+    }
+} else {
+%>
+<tr>
+	<td colspan="15">No records found.</td>
+</tr>
+			
+			
 <%
 }
 %>
