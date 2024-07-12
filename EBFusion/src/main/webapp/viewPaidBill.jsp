@@ -213,33 +213,49 @@ h2 {
         <th>Payment ID</th>
         <th>EmailId</th>
         <th>Service Number</th>
+        <th>Bill Month</th>
         <th>Amount</th>
         <th>Account Number</th>
         <th>Payment Date</th>
         <th>Total Amount</th>
         <th>Paid Amount</th>
+        <th>Paid Status</th>
         <th>Print Receipt</th>
         
         </tr>
     </thead>
+<%
+String readingTakenDate=request.getParameter("readingTakenDate");
 
+%>
 <%List<Payment> list=(ArrayList<Payment>)request.getAttribute("list");
 for(Payment obj:list)
 {
+	
+	
+	
 %>
+
 <tr>
         <td><%=obj.getPaymentId() %></td> 
         <td><%=obj.getEmailId() %></td>
         <td><%=obj.getServiceNumber() %></td>
+        
+        <td><%=readingTakenDate %></td>
          <td><%=obj.getAmount() %></td>
         <td><%=obj.getAccountNumber() %></td>
         <td><%=obj.getPaymentDate() %>
         <td><%=obj.getTotalAmount() %>
         <td><%=obj.getPayedAmount() %></td>
-      
+      <td><%=obj.getPayedStatus() %>
        
        
-        
+         <td>
+                <button onclick="generatePaymentReceipt('<%= obj.getPaymentId() %>','<%= obj.getServiceNumber() %>','<%= obj.getPaymentDate() %>','<%= obj.getAmount() %>', 
+                    '<%= obj.getAccountNumber() %>','<%=obj.getPayedAmount() %>','<%= obj.getTotalAmount() %>')">
+                Print Receipt
+                </button>
+            </td>
          
 </tr>
 <%
@@ -247,7 +263,35 @@ for(Payment obj:list)
 %>
 </table>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 
+<script>
+    function generatePaymentReceipt(paymentId, serviceNumber, paymentDate, amount, accountNumber,payAmount, totalAmount)
+    {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.setFont("helvetica");
+        doc.setFontSize(18);
+        
+        const logoSrc = 'ebLogo.jpg'; 
+        const companyName = 'EB FUSION EB SERVICES AND ITS PAYMENT';
+        
+        doc.addImage(logoSrc, 'JPEG', 10, 10, 30, 30);
+        doc.text(companyName, 50, 25);
+        doc.setFontSize(16);
+        doc.text("Payment Receipt:", 10, 40);
+        doc.setFontSize(12);
+        doc.text("Payment Receipt Number: " + paymentId, 10, 50);
+        doc.text("Service Number: " + serviceNumber, 10, 60);
+        doc.text("Payment Date: " + paymentDate, 10, 70)
+        doc.text("Electricity Bill: " + amount, 10, 80);       
+        doc.text("Account Number: " + accountNumber, 10, 90);
+        doc.text("Electricity Bill+Penalty: " + payAmount, 10, 100);       
+        doc.text("Total Amount: " + totalAmount, 10, 110);
+       
+        doc.save("receipt_" + serviceNumber + ".pdf");
+    }
+</script>
         
 </body>
 </html>

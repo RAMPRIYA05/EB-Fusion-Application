@@ -1,5 +1,6 @@
 package com.chainsys.ebfusion.dao;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.chainsys.ebfusion.model.Bill;
@@ -8,9 +9,12 @@ import com.chainsys.ebfusion.model.Customer;
 import com.chainsys.ebfusion.model.Payment;
 import com.chainsys.ebfusion.model.User;
 
+
+
+
 @Repository
 public interface UserDAO {
-	public void saveDetails(User user);
+	public boolean saveDetails(User user);
     public String getPassword(String emailId);
 	public String getUserEmailId(String emailId);
 	public List<User> listUsers();
@@ -35,7 +39,7 @@ public interface UserDAO {
 	public void payAmount(Payment payment);
 	public List<Payment> checkPayment(String email);
 	public List<Payment> viewPayment();
-	void updatePaidStatus(Payment payment);
+	void updatePaidStatus(long serviceNumber);
 	
 	public void applyComplaint(Complaint complaint);
 	public List<Complaint> viewComplaint(String email);
@@ -46,5 +50,9 @@ public interface UserDAO {
 	
 	public List<Customer> searchConnection(String emailId);
 	public List<Bill> searchUnpaid(String emailId);
+	
+	
+	String readReadingTakenDate(String email, Long service);
+
 
 }

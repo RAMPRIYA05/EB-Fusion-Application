@@ -55,6 +55,7 @@ String emailId=request.getParameter("emailId");
 String serviceNumber=request.getParameter("serviceNumber");
 String amount=request.getParameter("amount");
 String dueDate=request.getParameter("dueDate");
+String readingTakenDate=request.getParameter("readingTakenDate");
 %>
 
     
@@ -68,7 +69,7 @@ String dueDate=request.getParameter("dueDate");
         <br>Payment Date:<input style="width:95%;padding:8px;margin:5px;box-sizing:border-box;" id="paymentDate" name="paymentDate" value="<%= LocalDate.now() %>" readonly></br>
         <br>Total Amount:<input type="number" id="totalAmount" name="totalAmount" readonly></br>
         <br>Payed amount:<input type="number" id="payedAmount" name="payedAmount" required></br>
-            
+             <input type="hidden" name="readingTakenDate" value="<%=readingTakenDate %>">
         <br><button type="submit">Submit</button> 
      
         </form>

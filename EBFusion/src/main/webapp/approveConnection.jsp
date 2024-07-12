@@ -16,47 +16,103 @@
 	box-sizing: border-box;
 }
 
-nav {
-	background-color: brown;
-	position: sticky;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	left: 0;
-	height: 110px;
-}
-
-.logo, ul, li, p {
-	display: inline;
-}
-
-li {
-	padding-left: 15px;
-	cursor: pointer;
-}
-
-ul {
-	margin-left: 20%;
-	padding-left: 5px;
+  
+       .navbar-nav {
+    background-color: peachpuff;
+    padding: 10px;
 }
 
 .logo {
-	size: 30px;
-	height: 60px;
-	margin-left: 15px;
-	margin-top: 15px;
+    max-width: 60px;
+    heigth:20px;
+    
+    vertical-align: middle;
+}
+.navbar-nav p,img{
+          display:inline;
+          
 }
 
-a {
-	color: gold;
-	text-decoration: none;
+.navbar-nav p {
+    color: brown;
+    font-size:40px;
+   
+    font-weight: 100;
+    padding-left: 20px;
+    font-style: italic;
+    margin-left:100px;
+    vertical-align: middle;
 }
 
-h4 {
-	margin-left: 450px;
-	padding: 10px;
+.navbar {
+    background-color:brown;
+    color:white;
+    padding: 10px;
 }
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar li a[href="logOut"] {
+    margin-left:520px;
+}
+
+ .dropdown {
+    position: relative;
+    display: inline-block;
+    color: white;
+   
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: brown;
+    min-width: 160px;
+    font-size: 14px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; 
+    color: black; 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
+}
+       
 
 table {
 	background-color: peachpuff;
@@ -92,38 +148,9 @@ h2 {
 	text-align: center;
 }
 
-.dropdown {
-	color: gold;
-	position: relative;
-	display: inline-block;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: white;
-	min-width: 60px;
-	font-size: 12px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}
-
-.dropdown-content a {
-	color: black;
-	text-decoration: none;
-	display: block;
-}
-
-.dropdown-content a:hover {
-	background-color: grey
-}
-
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-.dropdown:hover .dropbtn {
-	background-color: white;
+h4 {
+	margin-top: 31px;
+	text-align: center;
 }
 
 .buttons-atag.active {
@@ -138,9 +165,11 @@ h2 {
 <body>
       
     <header>
-            <nav>
+            <nav class="navbar-nav">
                 <img class="logo" src="ebLogo.jpg" alt="Logo">
-               <p style="color:white;font-size:300%;font-weight: 100;padding-left:50px; font-style:italic;">EB FUSION EB SERVICES AND ITS PAYMENT</p>
+               <p>EB FUSION EB SERVICES AND ITS PAYMENT</p>
+              </nav>
+                <nav class="navbar">
                 <ul> 
                     <li><a href="">Home</a></li>
                     <li><a href="">About Us</a></li>
@@ -148,7 +177,7 @@ h2 {
                    <li><a href="listOfUsers">Registered Customer</a></li>
                  <li>
 					<div class="dropdown">
-						Bill
+						<a>Bill</a>
 						<div class="dropdown-content">
 							<a href="/adminViewPaidStatus" method="get">Paid Bill
 								</a> <a href="/readAllBill" method="get">UnPaid Bill
@@ -158,8 +187,8 @@ h2 {
 					</div>
 				</li>
 				<li>
-					<div style="buttons-atag.active=color:gold;text-decoration:underline;" class="dropdown">
-						Connection
+					<div style="buttons-atag.active=color:white;text-decoration:underline;" class="dropdown">
+						<a>Connection</a>
 						<div class="dropdown-content">
 
 							<a href="/readAllConnection" method="get">New Connection
@@ -171,7 +200,7 @@ h2 {
 				</li>
 				<li>
 					<div class="dropdown">
-						Complaint
+						<a>Complaint</a>
 						<div class="dropdown-content">
 
 							<a href="adminViewComplaint" method="get">Pending Complaint</a> <a
@@ -181,7 +210,7 @@ h2 {
 					</div>
 				</li>
 				<li> <a href="adminProfile">Profile</a></li>
-				<li><a style="margin-left: 200px;" href="logOut">LogOut</a></li>
+				<li><a style="margin-left: 150px;" href="logOut">LogOut</a></li>
                 </ul>
             </nav>
         </header> 

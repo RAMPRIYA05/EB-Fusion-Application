@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.chainsys.ebfusion.model.Bill;
 
 public class BillMapper implements RowMapper<Bill> {
+
 	@Override
 	public Bill mapRow(ResultSet rs,int rowNum) throws SQLException {
 		Bill bill=new Bill();
@@ -30,5 +31,5 @@ public class BillMapper implements RowMapper<Bill> {
 	    bill.setAmount(amount);
 	    bill.setBillStatus(billStatus);
 		return bill;
-}
+	}
 }

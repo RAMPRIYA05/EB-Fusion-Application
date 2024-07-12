@@ -225,8 +225,9 @@ h2 {
 					<th scope="col">Due Date</th>
 					<th scope="col">Service Type</th>
 					<th scope="col">Amount</th>
-					<th scope="col">Pay</th>
+					
 					<th scope="col">Bill Status</th>
+					<th scope="col">Pay</th>
 				</tr>
 			</thead>
 
@@ -244,7 +245,7 @@ h2 {
 				<td><%= obj.getAmount() %></td>
               <td><%=obj.getBillStatus() %></td>
 				<td><a style="color: blue;"
-					href="paymentForm.jsp?emailId=<%=obj.getEmailId()%>&serviceNumber=<%=obj.getServiceNumber()%>&amount=<%=obj.getAmount()%>&dueDate=<%=obj.getDueDate()%>">pay</a></td>
+					href="paymentForm.jsp?emailId=<%=obj.getEmailId()%>&serviceNumber=<%=obj.getServiceNumber()%>&readingTakenDate=<%=obj.getReadingTakenDate()%>&amount=<%=obj.getAmount()%>&dueDate=<%=obj.getDueDate()%>">pay</a></td>
 
 
 

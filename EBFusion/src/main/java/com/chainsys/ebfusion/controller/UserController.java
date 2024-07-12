@@ -80,7 +80,7 @@ public class UserController {
                 if(password.equals(userDAO.getPassword(emailId)))
                 {
                 	session.setAttribute("UserEmailId", emailId);
-                    return "userWelcomePage.jsp";
+                  return "userWelcomePage.jsp";
                 }
                 else
                 {
