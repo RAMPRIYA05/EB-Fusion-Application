@@ -72,3 +72,5 @@ Bill Status helps the admin to see who paid the bill and who don't pay the bill.
      Customer can easily apply for new Connection through online with required documents.Once Admin appprove the new Connection bill.Customer can view the bill details.<br>
 <span style="color:blue">**Complaint:**</span><br>
    Customer can give complaint to admin.Admin rectify the complaint of the customer.Customers can view their complaint status.<br>
+<span style="color:blue">**Payment Receipt:**</span><br>
+   Customer can download their payment Receipt after their payment<br>
